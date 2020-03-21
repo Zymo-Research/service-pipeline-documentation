@@ -150,22 +150,22 @@ The report also summarizes the numbers of peaks annoatated as different type of 
 ## Differential binding
 Differential binding analysis compares the intensity of peaks in different sample groups, which are often different conditions, treatments, tissues, etc, using statistical analysis, if you have biological replicates for each sample group. This will tell you which peaks have statistically more significant binding in which sample groups. If biological replicates are not available, we will do a peak overlap analysis instead. This will tell you which peaks are present in which samples. Both analysis types are carried out using [`DiffBind`](https://bioconductor.org/packages/release/bioc/html/DiffBind.html). 
 
-1. Consensus peaks
+1. Consensus peaks<br>
 The first step of the analysis is the generation of a consenus peak set. For this purpose, if two peaks overlap with each other, a new merged peak will be generated to replace both. If replicates are available, group specific consenus peaks will be generated first, requiring a peak to be present in at least 51% of samples in that group, for example, 2 in 3 replicates. A global consensus peak set will be generated either from group specific consensus peaks, or sample peaks when replicates are not available. The numbers of reads in each consensus peaks are then counted and normalized. The global consenus peak set can be downloaded in the [Download data](#download-data) section of the report.
 
 ![Where to download differential binding results](../images/ChIPseq/download_differential_binding.jpeg)
 
-2. Similarity matrix of samples
+2. Similarity matrix of samples<br>
 From the consensus peaks and read counts, a similarity matrix is calculated to show the similarity between different samples. You should expect to see higher similarity between your biological replicates, as in the example below. If you prefer a PCA plot instead, you can find it in the [Download data](#download-data) section of the report.
 
 ![Similarity matrix plot](../images/ChIPseq/similarity_matrix.jpeg)
 
-3. Venn diagram of peaks
+3. Venn diagram of peaks<br>
 A Venn diagram of overlaps of peaks between different sample groups or samples is also made. 
 
 ![Venn diagram of peaks](../images/ChIPseq/venn_diagram.jpeg)
 
-4. Differential binding analysis results (when replicates are available)
+4. Differential binding analysis results (when replicates are available)<br>
 Differential binding analysis is carried out between each pairs of sample groups. A summary table gives you the number of peaks with statistically higher binding in each sample groups.
 
 ![Differential binding results summary](../images/ChIPseq/diffbind_summary.jpeg)
@@ -174,7 +174,7 @@ For every pairs of sample groups, top 50 most significant peaks with differentia
 
 ![DiffBind top 50 peaks](../images/ChIPseq/top_50_peaks.jpeg)
 
-5. Peak overlap analysis results (when replicates are not available)
+5. Peak overlap analysis results (when replicates are not available)<br>
 For experiments without replicates, a summary table of the numbers of peaks present/absent in different pairs of samples are listed in a summary table. The list of those peaks can be downloaded in the [Download data](#download-data) section of the report.
 
 ![Peak overlap summary table](../images/ChIPseq/peak_overlap_table.jpeg)
