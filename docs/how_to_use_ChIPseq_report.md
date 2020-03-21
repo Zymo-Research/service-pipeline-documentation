@@ -1,6 +1,6 @@
 # How to interpret the ChIPseq report
 
-This document describes how to understand the ChIPseq bioinformatics report delivered to you by Zymo. Most of the plots are taken from the [sample report](https://htmlpreview.github.io/?https://github.com/Zymo-Research/service-pipeline-documentation/blob/master/reports/ChIPseq_sample_report.html). The plots in your report might look a little different.
+This document describes how to understand the ChIPseq bioinformatics report delivered to you by Zymo. Most of the plots are taken from the [sample report](https://zymo-research.github.io/service-pipeline-documentation/reports/ChIPseq_sample_report.html). The plots in your report might look a little different.
 
 ## Table of contents
 * [Table of contents](#table-of-contents)
