@@ -160,7 +160,7 @@ This plot summarizes the composition of reads from different biotypes. A good RN
 ### featureCounts
 [`featureCounts`](http://bioinf.wehi.edu.au/featureCounts/) assigns reads that overlap exons to corresponding genes. This plot in the report summarizes how many reads are assigned and reasons why they are not assigned. A good RNAseq sample should have majority of reads assigned to genes. If a large portion of reads are "Unassigned_MultiMapping", this implies rRNA contamination in the sample, please confirm this with `Biotype Counts` plot. If a large portion of reads are "Unassigned_NoFeatures", this implies DNA contamination, you can see if `RSeQC` `Infer experiment` plot corroborates this suspicion.
 
-![featureCounts plot](../images/featurecounts.jpeg)
+![featureCounts plot](../images/RNAseq/featurecounts.jpeg)
 
 ## Comparison of samples
 
@@ -170,17 +170,17 @@ The pipeline uses [`edgeR`](https://bioconductor.org/packages/release/bioc/html/
 #### MDS plot
 This plots shows the distances between all samples. Each dot represents a sample and distances between dots represent differences in gene expression patterns between samples. You should expect replicate samples to be close to each other. You would hope to see clear distances between your comparison groups. This plot can help reveal some problems with your experiment such as batch effects as shown in the sample report. For example, in the sample report, there are clear differences between the Zika and Control groups, but there are also strong batch effects between the two sequencing runs. This batch effect should be corrected in downstream analysis. This is not currently done in our pipeline, but will be added in the future.
 
-![MDS plot](../images/mdsplot.jpeg)
+![MDS plot](../images/RNAseq/mdsplot.jpeg)
 
 #### Sample similarity
 This plot presents a different way to view the relationships between samples, in a Pearson similarity matrix. You can mouse over the colored blocks to see correlation coefficients between samples.
 
-![Similarity matrix plot](../images/similarity_matrix.jpeg)
+![Similarity matrix plot](../images/RNAseq/similarity_matrix.jpeg)
 
 ### Top gene expression patterns
 This plot shows a heatmap of expression patterns of top 100 genes with highest variance. Log2 values of fold changes of genes against their mean expression levels among all samples are plotted. Positive numbers (red) indicate higher expression levels, while negative numbers(blue) indicate lower expression levels. The genes were also clustered using hierarchical clustering. This plot gives you an overview of expression patterns among genes with most significant changes in their expression. You can also mouse over to see values for specifc gene and sample. In the sample report, you can clearly see three patterns among the top 100 genes: (1) higher in Zika samples, (2) higher in Control samples, and (3) higher in PE samples. A static version of this plot can also be downloaded in the `Download data` section.
 
-![Gene heatmap](../images/gene_heatmap.jpeg)
+![Gene heatmap](../images/RNA_seqgene_heatmap.jpeg)
 
 ### Differential gene expression
 The pipeline uses [`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html) to conduct differential gene expression analysis if you experiment was conducted with replication.
@@ -188,22 +188,22 @@ The pipeline uses [`DESeq2`](https://bioconductor.org/packages/release/bioc/html
 1. **Summary table**<br>
 The number of genes that are significantly differentially expressed between groups/conditions are summarized in a table. The numbers are dependent on the false discovery rate (FDR) and fold change cutoffs. You can find those values in the `Workflow summary` section of the report.
 
-![Differential expression summary table](../images/diff_exp_summary_table.jpeg)
+![Differential expression summary table](../images/RNAseq/diff_exp_summary_table.jpeg)
 
 2. **Scatter plot**<br>
 This plot shows a simple comparison of gene expression levels between two groups/conditions. Red dots represent differentially expressed genes, while grey ones represent genes not differentially expressed. One useful feature of this plot is that you can see the name of the gene when you mouse over a dot. Please note that not all genes are plotted here for technical reasons, but most if not all differentiall expressed genes should be plotted. You can download a static version with all genes plotted in the `Download data` section.
 
-![Differential expression scatter plot](../images/diff_exp_scatter_plot.jpeg)
+![Differential expression scatter plot](../images/RNAseq/diff_exp_scatter_plot.jpeg)
 
 3. **MA plot**<br>
 This plot presents the same data as the scatter plot, but in a different way. It plots Log2 fold changes (Y-axis) against mean expression levels (X-axis). This type of plot is common in RNAseq publications. Function and limitation of this plot are the same as the scatter plot.
 
-![Differential expression MA plot](../images/diff_exp_ma_plot.jpeg)
+![Differential expression MA plot](../images/RNAseq/diff_exp_ma_plot.jpeg)
 
 4. **Top 50 differentially expressed genes**<br>
 For each comparison, we list the top 50 differentially expressed genes (ranked by FDR) for your quick examination. You can download the full results of differential expression analysis in the `Download data` section. For each gene, the gene name, mean counts, Log2 fold change, and FDR are listed. If your reference genome is on [Ensembl Genomes](http://ensemblgenomes.org/), you can click on the gene names to view more information about that gene on Ensembl. 
 
-![Top 50 genes plot](../images/top_50_genes_plot.jpeg)
+![Top 50 genes plot](../images/RNAseq/top_50_genes_plot.jpeg)
 
 ### Gene set enrichment analysis
 The pipeline conducts gene set enrichment analysis among differentially expressed genes using [`g:Profiler`](https://biit.cs.ut.ee/gprofiler/gost). This analysis can tell you genes from which pathways or functional groups are enriched in the differentially expressed genes. Gene sets from [Gene Ontology](http://geneontology.org/) "biological process" subset, [Reactome](https://reactome.org/), and [KEGG](https://www.genome.jp/kegg/) are used in this analysis.
@@ -214,7 +214,7 @@ The number of gene sets that are significantly enriched are summarized in a tabl
 2. **Top 30 enriched gene sets**<br>
 For each comparison, we list the top 30 enriched gene sets (ranked by FDR) for your quick examination. You can download the full results of gene set enrichment analysis in the `Download data` section. You can click on the name of each gene set to view more information about that gene set.
 
-![Top 30 gene sets plot](../images/top_30_gene_sets_plot.jpeg)
+![Top 30 gene sets plot](../images/RNAseq/top_30_gene_sets_plot.jpeg)
 
 ## Download data
 This section of the report can deliver all your original data, intermediate analysis files, and final results to you via the internet. To protect your data, we have made the links in this section to automatically expire in 60 days. If you want to download your files after that, please do not hesitate to contact us. There are two subsections: (1) files for each sample, and (2) files for each pair-wise comparison. Different file types are arranged in tables. Simply click on the links to download individual files. We also provide you a way to download everything altogether. Please follow the instructions in the last subsection. If your institution has limits on how you download files from the internet, please do not hesitate to contact us. We will find a suitable way for you to download your data.
