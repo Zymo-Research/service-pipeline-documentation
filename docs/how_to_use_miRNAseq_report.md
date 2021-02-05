@@ -1,6 +1,6 @@
-# How to interpret the RNAseq report
+# How to interpret the miRNAseq report
 
-This document describes how to understand the RNAseq bioinformatics report delivered to you by Zymo. Most of the plots are taken from the [sample report](https://zymo-research.github.io/service-pipeline-documentation/reports/miRNAseq_sample_report.html). The plots in your report might look a little different.
+This document describes how to understand the miRNAseq bioinformatics report delivered to you by Zymo. Most of the plots are taken from the [sample report](https://zymo-research.github.io/service-pipeline-documentation/reports/miRNAseq_sample_report.html). The plots in your report might look a little different.
 
 ## Table of contents
 * [Table of contents](#table-of-contents)
@@ -28,7 +28,7 @@ This document describes how to understand the RNAseq bioinformatics report deliv
 
 ## Bioinformatics pipeline overview
 
-The RNAseq bioinformatics pipeline is built using [Nextflow](https://www.nextflow.io/) and adapted from [nf-core/smrnaseq pipeline](https://github.com/nf-core/smrnaseq) version 1.0.0. A brief summary of pipeline:
+The miRNAseq bioinformatics pipeline is built using [Nextflow](https://www.nextflow.io/) and adapted from [nf-core/smrnaseq pipeline](https://github.com/nf-core/smrnaseq) version 1.0.0. A brief summary of pipeline:
 
 1. Raw read QC ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/))
 2. Adapter trimming ([`Trim Galore!`](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/))
@@ -45,7 +45,7 @@ The bioinformatics report is generated using [`MultiQC`](https://multiqc.info/).
 ![Report overview](../images/RNAseq/report_overview.jpeg)
 
 ## General statistics table
-[The general statistics table](https://zymo-research.github.io/service-pipeline-documentation/reports/miRNAseq_sample_report.html#general_stats) gives an overview of some important stats of your samples. For example, how many reads were in each sample, how many reads passed filter, and how many reads were miRNA reads, etc. These stats are collected from different sections of the report to give you a snapshot. This is usually the quickest way for you to evaluate how your RNAseq experiment went. Here are a few important things you should look for when reading this table:
+[The general statistics table](https://zymo-research.github.io/service-pipeline-documentation/reports/miRNAseq_sample_report.html#general_stats) gives an overview of some important stats of your samples. For example, how many reads were in each sample, how many reads passed filter, and how many reads were miRNA reads, etc. These stats are collected from different sections of the report to give you a snapshot. This is usually the quickest way for you to evaluate how your miRNAseq experiment went. Here are a few important things you should look for when reading this table:
 1. Most of your reads passed filtering requirements after trimming. We have set the read filtering requirements according expected size of small RNAs (by default: 18-40 bp, you can find the exact requirements in the [`Workflow Summary` section](https://zymo-research.github.io/service-pipeline-documentation/reports/miRNAseq_sample_report.html#workflow_summary)). While it is rare that this number approach 100%, but one would hope most samples have more than 50% reads that are small RNAs.
 2. How much of your reads pass filtering are from miRNAs. There are many types of small RNAs other than miRNAs, so it is natural that only a portion of your reads come from miRNAs. This pipeline focus on the miRNA reads only in downstream analysis, so obviously, we would hope there are more miRNA reads than others. You can find more information on the composition of your reads in the [`miRTrace RNA Categories` section](https://zymo-research.github.io/service-pipeline-documentation/reports/miRNAseq_sample_report.html#mirtrace_rna_categories). We have seen a wide range of miRNA% in different samples, but in general, miRNA% <10% indicates problems with your sample.
 
@@ -142,4 +142,4 @@ This section of the report can deliver all your original data, intermediate anal
 This section lists the versions of softwares used in this bioinformatic pipeline. This should help you in writing the methods section of your publication or if you wish to carry out some of the analysis on your own.
 
 ## Workflow summary
-This section lists some important parameters of this particular study. This often includes which reference genome is used, how the trimming was done, and false discovery rate (FDR) and fold change thresholds used in differential gene expression analysis and gene set enrichment analysis. 
+This section lists some important parameters of this particular study. This often includes which reference genome is used, how the trimming was done, and false discovery rate (FDR) and fold change thresholds used in differential gene expression analysis. 
