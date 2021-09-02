@@ -44,7 +44,7 @@ Zhenguo Zhang
 
 The report was generated with our **RRBS Basic Analysis** pipeline built
 on [nextflow](https://www.nextflow.io/) platform. A example report can
-be found at <span style="color: yellow;">here</span>.
+be found at [here](../reports/MethylSeq_sample_report.basic.html).
 
 The backbone of the pipeline is as follows:
 

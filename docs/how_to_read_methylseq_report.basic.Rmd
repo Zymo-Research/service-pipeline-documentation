@@ -15,8 +15,9 @@ always_allow_html: true
 library(knitr)
 library(kableExtra)
 knitr::opts_chunk$set(echo = FALSE, warning = F,  fig.align = "center", out.width = "100%")
-imgFolder<-"../images/MethylSeq/Basic"
-assetFolder<-"../assets"
+dataType<-"MethylSeq"
+imgFolder<-file.path("../images",dataType,"Basic")
+assetFolder<-file.path("../assets", dataType)
 terminologyFile<-file.path(assetFolder, "terminology.csv")
 placeholder<-file.path(imgFolder,"placeholder.png")
 #----------------------------------
