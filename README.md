@@ -15,3 +15,9 @@ This report is generated using public data from [this paper](https://www.ncbi.nl
 * [Sample report](https://zymo-research.github.io/service-pipeline-documentation/reports/RNAseq_sample_report.html)<br>
 This report is generated using public data from [this paper](https://www.ncbi.nlm.nih.gov/pubmed/26952870).
 * [How to use the report](docs/how_to_use_RNAseq_report.md)
+
+## MethylSeq (Basic Analysis)
+* [Sample report](https://zymo-research.github.io/service-pipeline-documentation/reports/MethylSeq_sample_report.basic.html)<br>
+This report is generated using our internal data `in2514`.
+* [How to use the report](docs/how_to_read_methylseq_report.basic.md)
+
