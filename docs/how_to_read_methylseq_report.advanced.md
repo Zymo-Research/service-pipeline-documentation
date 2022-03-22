@@ -1,7 +1,7 @@
 How to read the Methylseq report - advanced analysis
 ================
 Zymo Bioinformatics
-21 March, 2022
+22 March, 2022
 
 -   [Overview of the pipeline](#overview-of-the-pipeline)
 -   [Report overview](#report-overview)
@@ -36,7 +36,7 @@ Zymo Bioinformatics
 ## Overview of the pipeline
 
 The report was generated with Zymo **Methylseq Advanced Analysis**
-pipeline built on [nextflow](https://www.nextflow.io/) platform. A
+pipeline built on the [nextflow](https://www.nextflow.io/) platform. A
 example report can be found at
 [here](../reports/MethylSeq_sample_report.advanced.html).
 
@@ -73,34 +73,22 @@ results are divided into sections, including workflow summary, sample
 information, DMCs and DMRs, functional enrichment analysis, and file
 downloads.
 
-<div class="img-border">
-
-<img src="../images/MethylSeq/Advanced/00.overview.png" width="95%" style="display: block; margin: auto;" />
-
-</div>
+<kbd style='border: 3px solid #9ecff7;'><img src="../images/MethylSeq/Advanced/00.overview.png" width="95%" style="display: block; margin: auto;" /></kbd>
 
 ## Workflow of data processing
 
 This section provides a summary of the data analysis, including the
 thresholds used for filtering input data, the tools and parameters for
-analysis, and the results generated.
+analyses, and the results generated.
 
-<div class="img-border">
-
-<img src="../images/MethylSeq/Advanced/00.workflow.png" width="95%" style="display: block; margin: auto;" />
-
-</div>
+<kbd style='border: 3px solid #9ecff7;'><img src="../images/MethylSeq/Advanced/00.workflow.png" width="95%" style="display: block; margin: auto;" /></kbd>
 
 ## Sample information
 
 This section provides the sample information, including sample IDs and
 their associated groups.
 
-<div class="img-border">
-
-<img src="../images/MethylSeq/Advanced/01.sample_information.png" width="95%" style="display: block; margin: auto;" />
-
-</div>
+<kbd style='border: 3px solid #9ecff7;'><img src="../images/MethylSeq/Advanced/01.sample_information.png" width="95%" style="display: block; margin: auto;" /></kbd>
 
 ## Distribution of methylation values
 
@@ -118,11 +106,7 @@ sample is presented in a [violin
 plot](https://en.wikipedia.org/wiki/Violin_plot). The samples are
 colored to distinguish different groups.
 
-<div class="img-border">
-
-<img src="../images/MethylSeq/Advanced/02.meth_distribution.sample.png" width="95%" style="display: block; margin: auto;" />
-
-</div>
+<kbd style='border: 3px solid #9ecff7;'><img src="../images/MethylSeq/Advanced/02.meth_distribution.sample.png" width="95%" style="display: block; margin: auto;" /></kbd>
 
 ### Methylation distribution - group means
 
@@ -131,13 +115,9 @@ to derive group means, which are displayed in a [density
 plot](https://en.wikipedia.org/wiki/Density_estimation). Note that only
 CpGs that pass the filterings in all the groups are used, and when there
 are more than 5 million CpGs, the sites are down-sampled to 5 million
-for computing efficiency..
+for computing efficiency.
 
-<div class="img-border">
-
-<img src="../images/MethylSeq/Advanced/03.meth_distribution.group.png" width="95%" style="display: block; margin: auto;" />
-
-</div>
+<kbd style='border: 3px solid #9ecff7;'><img src="../images/MethylSeq/Advanced/03.meth_distribution.group.png" width="95%" style="display: block; margin: auto;" /></kbd>
 
 ## DMCs
 
@@ -153,11 +133,7 @@ of input sites (after filtering), the number of significant DMCs (both
 hyper- and hypo-methylated) and the result’s filename. The filenames can
 be used to download the data from the [Downloads](#downloads) section.
 
-<div class="img-border">
-
-<img src="../images/MethylSeq/Advanced/04.DMC_summary.png" width="95%" style="display: block; margin: auto;" />
-
-</div>
+<kbd style='border: 3px solid #9ecff7;'><img src="../images/MethylSeq/Advanced/04.DMC_summary.png" width="95%" style="display: block; margin: auto;" /></kbd>
 
 ### Heatmap
 
@@ -171,11 +147,7 @@ top 3000 will be used). The dengrograms at the top and left show the
 clustering of samples and sites, respectively. The clusterings were
 computed using hierarchical clusterings with Eucleadian distances.
 
-<div class="img-border">
-
-<img src="../images/MethylSeq/Advanced/05.DMC_heatmap.png" width="95%" style="display: block; margin: auto;" />
-
-</div>
+<kbd style='border: 3px solid #9ecff7;'><img src="../images/MethylSeq/Advanced/05.DMC_heatmap.png" width="95%" style="display: block; margin: auto;" /></kbd>
 
 ## DMRs
 
@@ -194,11 +166,7 @@ be used to download the data from the [Downloads](#downloads) section.
 Note that many DMR statistical methods, such as DSS, don’t compute P
 values, and thus no adjusted *P* values are computed.
 
-<div class="img-border">
-
-<img src="../images/MethylSeq/Advanced/06.DMR_summary.png" width="95%" style="display: block; margin: auto;" />
-
-</div>
+<kbd style='border: 3px solid #9ecff7;'><img src="../images/MethylSeq/Advanced/06.DMR_summary.png" width="95%" style="display: block; margin: auto;" /></kbd>
 
 ### Heatmap
 
@@ -218,11 +186,7 @@ respectively.
 Similarly, the dengrograms were computed using hierarchical clusterings
 with Eucleadian distances.
 
-<div class="img-border">
-
-<img src="../images/MethylSeq/Advanced/07.DMR_heatmap.png" width="95%" style="display: block; margin: auto;" />
-
-</div>
+<kbd style='border: 3px solid #9ecff7;'><img src="../images/MethylSeq/Advanced/07.DMR_heatmap.png" width="95%" style="display: block; margin: auto;" /></kbd>
 
 ### Functional enrichment
 
@@ -236,11 +200,7 @@ functional term with the statistical significance shown on the y-axis
 (in the format
 ![\\log\_{10}(\\text{adjusted P value})](http://chart.apis.google.com/chart?cht=tx&chl=%5Clog_%7B10%7D%28%5Ctext%7Badjusted%20P%20value%7D%29 "\log_{10}(\text{adjusted P value})")).
 
-<div class="img-border">
-
-<img src="../images/MethylSeq/Advanced/08.functional_enrichment.DMR_genes.png" width="95%" style="display: block; margin: auto;" />
-
-</div>
+<kbd style='border: 3px solid #9ecff7;'><img src="../images/MethylSeq/Advanced/08.functional_enrichment.DMR_genes.png" width="95%" style="display: block; margin: auto;" /></kbd>
 
 ## Downloads
 
@@ -248,11 +208,7 @@ This section provides links to all kinds of downloadable results. At
 present, the provided are DMCs, DMRs, and functional enrichment analysis
 of DMR-overlapped genes.
 
-<div class="img-border">
-
-<img src="../images/MethylSeq/Advanced/09.downloads.png" width="95%" style="display: block; margin: auto;" />
-
-</div>
+<kbd style='border: 3px solid #9ecff7;'><img src="../images/MethylSeq/Advanced/09.downloads.png" width="95%" style="display: block; margin: auto;" /></kbd>
 
 These files are normally tab- or comma- delimited, and compressed in
 gzip. More details on the file formats are provided below:
@@ -269,9 +225,6 @@ for example, the column ‘postprob.overThreshold’ is only available in
 the output of DSS. The same principle applies to the DMR files.
 
 <table>
-<caption>
-Format of DMC files
-</caption>
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -401,10 +354,9 @@ The filename is named in the format of
 *&lt;method&gt;* provides the statistical method (e.g., DSS), and
 *&lt;group1&gt;* and *&lt;group2&gt;* are the compared group names.
 
+The file content is explained as follows:
+
 <table>
-<caption>
-Format of DMR files
-</caption>
 <thead>
 <tr>
 <th style="text-align:left;">
@@ -533,5 +485,3 @@ where *&lt;method&gt;* provides the statistical method (e.g., DSS), and
 | effective\_domain\_size | The total number of genes annotated in the source domain. E.g., all the genes annotated in <GO:BP>.                                           |
 | source\_order           | The numeric order for the term within its source domain.                                                                                      |
 | parents                 | A list of term IDs that are hierarchically directly above the term. For non-hierarchical data sources this points to an artificial root node. |
-
-Format of gprofiler functional enrichment files

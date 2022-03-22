@@ -38,12 +38,14 @@ insert_image<-function(f, ...) {
 
 ## a hood to add border to images
 knitr::knit_hooks$set(class = function(before, options, envir) {
-  if(before){
-    sprintf("<div class = '%s'>", options$class)
-  }else{
-    "</div>"
+  if(options$class == "img-border") {
+    if(before){
+      sprintf("<kbd style='border: 3px solid #9ecff7;'>", options$class)
+    }else{
+      "</kbd>"
+    }
   }
-})
+  })
 ```
 
 <style>
@@ -254,7 +256,7 @@ for example, the column 'postprob.overThreshold' is only available in
 the output of DSS. The same principle applies to the DMR files.
 
 ```{r}
-caption<-"Format of DMC files"
+caption<-NULL
 format_file<-read.csv(file.path(assetFolder,"file_format.dmc.csv"))
 kable(format_file, caption=caption)
 ```
@@ -265,8 +267,10 @@ The filename is named in the format of *dmr_\<method\>.\<group1\>\_vs\_\<group2\
 where *\<method\>* provides the statistical method (e.g., DSS), and *\<group1\>*
 and *\<group2\>* are the compared group names.
 
+The file content is explained as follows:
+
 ```{r}
-caption<-"Format of DMR files"
+caption<-NULL
 format_file<-read.csv(file.path(assetFolder,"file_format.dmr.csv"))
 kable(format_file, caption=caption)
 ```
@@ -284,7 +288,7 @@ where *\<method\>* provides the statistical method (e.g., DSS), and *\<group1\>*
 and *\<group2\>* are the compared group names.
 
 ```{r}
-caption<-"Format of gprofiler functional enrichment files"
+caption<-NULL
 format_file<-read.csv(file.path(assetFolder,"file_format.gprofiler.csv"))
-kable(format_file, caption=caption, escape=F, format="simple")
+kable(format_file, caption=caption, escape=F, format="pipe")
 ```
