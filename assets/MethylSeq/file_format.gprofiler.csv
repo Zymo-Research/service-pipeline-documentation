@@ -1,0 +1,15 @@
+Column,Description
+query,"A label for input query. The value is the same for one set of DMRs."
+significant,"*TRUE* if the functional enrichment is significant; otherwise *FALSE*."
+p_value,"Hypergeometric p-value after correction for multiple testing".
+term_size,"The number of genes that are annotated to the functional term genomewide."
+query_size,"The number of input genes, should be constant for an analysis."
+intersection_size,"The number of input genes annotated to the term."
+precision,"The proportion of genes in the input list that are annotated to the term, i.e., *intersection_size/query_size*."
+recall,"The proportion of genes in the term that the query recovers, i.e., *intersection_size/term_size*."
+term_id,"Unique term identifier, e.g GO:0005005."
+source,"Abbreviated source name for the term, e.g., GO:BP."
+term_name,"Short name of the functional term."
+effective_domain_size,"The total number of genes annotated in the source domain. E.g., all the genes annotated in GO:BP."
+source_order,"The numeric order for the term within its source domain."
+parents,"A list of term IDs that are hierarchically directly above the term. For non-hierarchical data sources this points to an artificial root node."
