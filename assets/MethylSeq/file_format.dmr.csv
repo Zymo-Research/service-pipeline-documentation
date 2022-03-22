@@ -1,0 +1,11 @@
+Column,Description
+"chr",Chromosome name of the DMR
+"start","Genomic start of the DMR, 1-based"
+"end","Genomic end of the DMR, 1-based and inclusive"
+"length","The length of the DMR in basepairs, i.e., from start to end"
+"nCG","The number of CpGs included in the DMR"
+"group1Mean","The DMR's mean methylation level over group 1 samples; for DSS output, it may be smoothed."
+"group2Mean","The same as `group1Mean`, but over group 2 samples."
+"methDiff","The methylation difference between the two groups."
+"areaStat","The sum of the test statistics of all CpG sites within the DMR"
+<sampleId>, "The columns headed by sample Ids show the methylation value of the DMR in each sample, i.e., the mean of all CpGs within the DMR."

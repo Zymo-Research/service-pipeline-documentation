@@ -1,0 +1,14 @@
+Column,Description
+chr,Chromosome name of the DMC
+pos,"Chromosomal position of the DMC. 1-based. For a CpG, this position always refers to the C on the plus strand."
+group1Mean,"The mean of methylation values for group 1 samples. For DSS-based output, these values are smoothed."
+group2Mean,"The same as `group1Mean`, but for group 2."
+methDiff,"The difference between `group1Mean` and `group2Mean`."
+diff.se,"The standard error of `methDiff`"
+stat,"The statistics computed for `methDiff`."
+phi1,"The estimated dispersions for group 1. Available for DSS method only."
+phi2,"The estimated dispersions for group 2. Available for DSS method only."
+pValue,"Raw P values"
+padj,"Adjusted P values using the Benjamini & Hochberg method."
+postprob.overThreshold,"The posterior probability that `methDiff` is greater than prespecified delta (default 0.1)."
+<sampleId>, "The columns headed by sample Ids show the raw methylation value of each DMC in each sample."
