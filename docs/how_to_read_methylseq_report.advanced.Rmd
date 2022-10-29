@@ -48,13 +48,6 @@ knitr::knit_hooks$set(class = function(before, options, envir) {
   })
 ```
 
-<style>
-.img-border {
-   border: 3px solid #9ecff7;
-   display: inline-block;
-}
-</style>
-
 ## Overview of the pipeline
 
 The report was generated with Zymo **Methylseq Advanced Analysis** pipeline
