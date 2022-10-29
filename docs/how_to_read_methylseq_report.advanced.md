@@ -1,7 +1,7 @@
 How to read the Methylseq report - advanced analysis
 ================
 Zymo Bioinformatics
-22 March, 2022
+28 October, 2022
 
 -   [Overview of the pipeline](#overview-of-the-pipeline)
 -   [Report overview](#report-overview)
@@ -174,12 +174,12 @@ This section shows the heatmaps of methylation values for the DMRs
 detected in each comparison. Again, only top 3000 DMRs are presented.
 The methylation value of each DMR in each sample is computed as follows:
 
-![\\frac{ \\sum\_{\\text{sites in DMR}} {\#methylated} }{ \\sum\_{\\text{sites in DMR}}{\#total} }](http://chart.apis.google.com/chart?cht=tx&chl=%5Cfrac%7B%20%5Csum_%7B%5Ctext%7Bsites%20in%20DMR%7D%7D%20%7B%23methylated%7D%20%7D%7B%20%5Csum_%7B%5Ctext%7Bsites%20in%20DMR%7D%7D%7B%23total%7D%20%7D "\frac{ \sum_{\text{sites in DMR}} {#methylated} }{ \sum_{\text{sites in DMR}}{#total} }")
+![\\frac{ \\sum\_{\\text{sites in DMR}} {#methylated} }{ \\sum\_{\\text{sites in DMR}}{#total} }](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Cfrac%7B%20%5Csum_%7B%5Ctext%7Bsites%20in%20DMR%7D%7D%20%7B%23methylated%7D%20%7D%7B%20%5Csum_%7B%5Ctext%7Bsites%20in%20DMR%7D%7D%7B%23total%7D%20%7D "\frac{ \sum_{\text{sites in DMR}} {#methylated} }{ \sum_{\text{sites in DMR}}{#total} }")
 
 where
-![\#total](http://chart.apis.google.com/chart?cht=tx&chl=%23total "#total")
+![\#total](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%23total "#total")
 and
-![\#methylated](http://chart.apis.google.com/chart?cht=tx&chl=%23methylated "#methylated")
+![\#methylated](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%23methylated "#methylated")
 provide the numbers of total and methylated reads at each site,
 respectively.
 
@@ -198,7 +198,7 @@ enriched terms. The functional terms come from various databases
 (GeneOntology, KEGG, CORUM, etc). In the plot, each dot represents one
 functional term with the statistical significance shown on the y-axis
 (in the format
-![\\log\_{10}(\\text{adjusted P value})](http://chart.apis.google.com/chart?cht=tx&chl=%5Clog_%7B10%7D%28%5Ctext%7Badjusted%20P%20value%7D%29 "\log_{10}(\text{adjusted P value})")).
+![\\log\_{10}(\\text{adjusted P value})](https://latex.codecogs.com/png.image?%5Cdpi%7B110%7D&space;%5Cbg_white&space;%5Clog_%7B10%7D%28%5Ctext%7Badjusted%20P%20value%7D%29 "\log_{10}(\text{adjusted P value})")).
 
 <kbd style='border: 3px solid #9ecff7;'><img src="../images/MethylSeq/Advanced/08.functional_enrichment.DMR_genes.png" width="95%" style="display: block; margin: auto;" /></kbd>
 
@@ -216,9 +216,9 @@ gzip. More details on the file formats are provided below:
 ### DMC files
 
 The filename is named in the format of
-*dms\_&lt;method&gt;.&lt;group1&gt;\_vs\_&lt;group2&gt;.tsv.gz*, where
-*&lt;method&gt;* provides the statistical method (e.g., DSS), and
-*&lt;group1&gt;* and *&lt;group2&gt;* are the compared group names.
+*dms\_\<method\>.\<group1\>\_vs\_\<group2\>.tsv.gz*, where *\<method\>*
+provides the statistical method (e.g., DSS), and *\<group1\>* and
+*\<group2\>* are the compared group names.
 
 Note that some columns are method-specific and thus omitted in output;
 for example, the column ‘postprob.overThreshold’ is only available in
@@ -337,7 +337,7 @@ delta (default 0.1).
 </tr>
 <tr>
 <td style="text-align:left;">
-&lt;sampleId&gt;
+\<sampleId\>
 </td>
 <td style="text-align:left;">
 The columns headed by sample Ids show the raw methylation value of each
@@ -350,9 +350,9 @@ DMC in each sample.
 ### DMR files
 
 The filename is named in the format of
-*dmr\_&lt;method&gt;.&lt;group1&gt;\_vs\_&lt;group2&gt;.tsv.gz*, where
-*&lt;method&gt;* provides the statistical method (e.g., DSS), and
-*&lt;group1&gt;* and *&lt;group2&gt;* are the compared group names.
+*dmr\_\<method\>.\<group1\>\_vs\_\<group2\>.tsv.gz*, where *\<method\>*
+provides the statistical method (e.g., DSS), and *\<group1\>* and
+*\<group2\>* are the compared group names.
 
 The file content is explained as follows:
 
@@ -443,7 +443,7 @@ The sum of the test statistics of all CpG sites within the DMR
 </tr>
 <tr>
 <td style="text-align:left;">
-&lt;sampleId&gt;
+\<sampleId\>
 </td>
 <td style="text-align:left;">
 The columns headed by sample Ids show the methylation value of the DMR
@@ -463,25 +463,61 @@ The files show the significant functional terms. One can find more
 information on the analysis and the output format by visiting
 [here](https://biit.cs.ut.ee/gprofiler/page/docs) and
 [here](https://cran.r-project.org/web/packages/gprofiler2/vignettes/gprofiler2.html).
+The functional terms examined are from multiple resources, including
+[Gene Ontology](http://geneontology.org/),
+[KEGG](https://www.genome.jp/kegg/), [Reactome](https://reactome.org/),
+[TRANSFAC](https://genexplain.com/transfac/),
+[miRTarBase](https://mirtarbase.cuhk.edu.cn/~miRTarBase/miRTarBase_2019/php/index.php),
+[CORUM](https://mips.helmholtz-muenchen.de/corum/), [Human Protein
+Atlas](https://www.proteinatlas.org/), [Human Phenotype
+Ontology](http://hpo.jax.org/app/), and
+[WikiPathways](https://www.wikipathways.org/index.php/WikiPathways).
 
 The filename is named in the format of
-*func\_enrich.dmr\_&lt;method&gt;.&lt;group1&gt;\_vs\_&lt;group2&gt;.enrich\_analysis.gprofiler.tsv*,
-where *&lt;method&gt;* provides the statistical method (e.g., DSS), and
-*&lt;group1&gt;* and *&lt;group2&gt;* are the compared group names.
+*func_enrich.dmr\_\<method\>.\<group1\>\_vs\_\<group2\>.enrich_analysis.gprofiler.tsv*,
+where *\<method\>* provides the statistical method (e.g., DSS), and
+*\<group1\>* and *\<group2\>* are the compared group names. Each row
+shows the statistical result for each functional term.
 
-| Column                  | Description                                                                                                                                   |
-|:------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------|
-| query                   | A label for input query. The value is the same for one set of DMRs.                                                                           |
-| significant             | *TRUE* if the functional enrichment is significant; otherwise *FALSE*.                                                                        |
-| p\_value                | Hypergeometric p-value after correction for multiple testing.                                                                                 |
-| term\_size              | The number of genes that are annotated to the functional term genomewide.                                                                     |
-| query\_size             | The number of input genes, should be constant for an analysis.                                                                                |
-| intersection\_size      | The number of input genes annotated to the term.                                                                                              |
-| precision               | The proportion of genes in the input list that are annotated to the term, i.e., *intersection\_size/query\_size*.                             |
-| recall                  | The proportion of genes in the term that the query recovers, i.e., *intersection\_size/term\_size*.                                           |
-| term\_id                | Unique term identifier, e.g <GO:0005005>.                                                                                                     |
-| source                  | Abbreviated source name for the term, e.g., <GO:BP>.                                                                                          |
-| term\_name              | Short name of the functional term.                                                                                                            |
-| effective\_domain\_size | The total number of genes annotated in the source domain. E.g., all the genes annotated in <GO:BP>.                                           |
-| source\_order           | The numeric order for the term within its source domain.                                                                                      |
-| parents                 | A list of term IDs that are hierarchically directly above the term. For non-hierarchical data sources this points to an artificial root node. |
+| Column                | Description                                                                                                                                                                                                                     |
+|:----------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| query                 | A label for the input query, in the format *group1_vs_group2*. The value is constant in each file.                                                                                                                              |
+| significant           | *TRUE* if the enrichment of input genes in the functional term (see columns *term_id* and *term_name*) is significant; otherwise *FALSE*.                                                                                       |
+| p_value               | Hypergeometric p-value after correction for multiple testing. More on the statistical tests at [here](https://biit.cs.ut.ee/gprofiler/page/docs#significance_threhshold).                                                       |
+| term_size             | The number of all genes that are annotated to the functional term in the annotation source (see the column *source*).                                                                                                           |
+| query_size            | The number of input genes that are associated with at least one functional term in the annotation source (see the column *source*). This value is constant for each annotation source for a given list of DMR-overlapped genes. |
+| intersection_size     | The number of input genes annotated to the term in each row, i.e., the overlap between the genes in input and all the genes annotated to the functional term.                                                                   |
+| precision             | The ratio between intersected genes (both in query and annotated to the term) and the total query, i.e., *intersection_size/query_size*.                                                                                        |
+| recall                | The ratio between intersected genes (both in query and annotated to the term) and all the genes annotated to the functional term in the annotation source, i.e., *intersection_size/term_size*.                                 |
+| term_id               | Unique identifier for the functional term in each row, e.g <GO:0005005>.                                                                                                                                                        |
+| source                | Abbreviated name for the annotation source, e.g., <GO:BP> for GeneOntology:biological_process.                                                                                                                                  |
+| term_name             | The short name of the functional term.                                                                                                                                                                                          |
+| effective_domain_size | The total number of all genes annotated in the source domain genomewide. E.g., all the human genes annotated in <GO:BP>.                                                                                                        |
+| source_order          | The numeric order for the term within its source domain, relevant to the positions in the Manhattan plot.                                                                                                                       |
+| parents               | A list of term IDs (separated by ‘\|’) that are direct parents of the term, and an artificial root node for non-hierarchical data.                                                                                              |
+
+**More on the statistical test**
+
+Hypergeometric test is used to test whether the input genes are enriched
+(i.e., overrepresented) in any functional term (e.g., RNA folding,
+<GO:0034337>) from an annotation source (e.g.,
+GeneOntology:biological_process). Essentially, it compares the fraction
+of input genes that are annotated to a functional term against the
+background fraction, which is the fraction of genes annotated to the
+term in the entire annotation source.
+
+Using the figure below as an example, the rectangle denotes the entire
+annotation source (e.g., GeneOntology:biological_process), and the
+number of genes it contains is called *effective_domain_size*. The pink
+circle denotes the genes annotated to a functional term (e.g., RNA
+folding, <GO:0034337>) in the annotation source, and the number of genes
+is called *term_size*. The green circle denotes all the input genes that
+are overlapped with any DMRs detected from one comparison (genes having
+no annotations are excluded), and the number of genes is called
+*query_size*. The overlap (blue part) between the two circles denotes
+the input genes that are also annotated to the term, and its set size is
+called *intersection_size*. The statistical test examines whether the
+fraction *intersection_size/query_size* is significantly greater than
+*term_size/effective_domain_size*.
+
+<img src="../assets/MethylSeq/gprofiler-explanation.png" width="60%" style="display: block; margin: auto;" />
