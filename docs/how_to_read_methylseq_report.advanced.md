@@ -1,7 +1,7 @@
 How to read the Methylseq report - advanced analysis
 ================
 Zymo Bioinformatics
-28 October, 2022
+29 October, 2022
 
 -   [Overview of the pipeline](#overview-of-the-pipeline)
 -   [Report overview](#report-overview)
@@ -25,13 +25,6 @@ Zymo Bioinformatics
     -   [DMR files](#dmr-files)
     -   [Functional enrichment of DMR overlapping genes
         files](#functional-enrichment-of-dmr-overlapping-genes-files)
-
-<style>
-.img-border {
-   border: 3px solid #9ecff7;
-   display: inline-block;
-}
-</style>
 
 ## Overview of the pipeline
 
@@ -479,28 +472,28 @@ where *\<method\>* provides the statistical method (e.g., DSS), and
 *\<group1\>* and *\<group2\>* are the compared group names. Each row
 shows the statistical result for each functional term.
 
-| Column                | Description                                                                                                                                                                                                                     |
-|:----------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| query                 | A label for the input query, in the format *group1_vs_group2*. The value is constant in each file.                                                                                                                              |
-| significant           | *TRUE* if the enrichment of input genes in the functional term (see columns *term_id* and *term_name*) is significant; otherwise *FALSE*.                                                                                       |
-| p_value               | Hypergeometric p-value after correction for multiple testing. More on the statistical tests at [here](https://biit.cs.ut.ee/gprofiler/page/docs#significance_threhshold).                                                       |
-| term_size             | The number of all genes that are annotated to the functional term in the annotation source (see the column *source*).                                                                                                           |
-| query_size            | The number of input genes that are associated with at least one functional term in the annotation source (see the column *source*). This value is constant for each annotation source for a given list of DMR-overlapped genes. |
-| intersection_size     | The number of input genes annotated to the term in each row, i.e., the overlap between the genes in input and all the genes annotated to the functional term.                                                                   |
-| precision             | The ratio between intersected genes (both in query and annotated to the term) and the total query, i.e., *intersection_size/query_size*.                                                                                        |
-| recall                | The ratio between intersected genes (both in query and annotated to the term) and all the genes annotated to the functional term in the annotation source, i.e., *intersection_size/term_size*.                                 |
-| term_id               | Unique identifier for the functional term in each row, e.g <GO:0005005>.                                                                                                                                                        |
-| source                | Abbreviated name for the annotation source, e.g., <GO:BP> for GeneOntology:biological_process.                                                                                                                                  |
-| term_name             | The short name of the functional term.                                                                                                                                                                                          |
-| effective_domain_size | The total number of all genes annotated in the source domain genomewide. E.g., all the human genes annotated in <GO:BP>.                                                                                                        |
-| source_order          | The numeric order for the term within its source domain, relevant to the positions in the Manhattan plot.                                                                                                                       |
-| parents               | A list of term IDs (separated by ‘\|’) that are direct parents of the term, and an artificial root node for non-hierarchical data.                                                                                              |
+| Column                | Description                                                                                                                                                                                                                                                                            |
+|:----------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| query                 | A label for the input query, in the format *group1_vs_group2*. The value is constant in each file.                                                                                                                                                                                     |
+| significant           | *TRUE* if the enrichment of input genes in the functional term (see columns *term_id* and *term_name*) is significant; otherwise *FALSE*.                                                                                                                                              |
+| p_value               | Hypergeometric p-value after correction for multiple testing. More on the statistical tests at [here](https://biit.cs.ut.ee/gprofiler/page/docs#significance_threhshold).                                                                                                              |
+| term_size             | The number of all genes that are annotated to the functional term in the annotation source (see the column *source*).                                                                                                                                                                  |
+| query_size            | The number of input genes that are associated with at least one functional term in the annotation source (see the column *source*). This value is constant for each annotation source for a given analysis, e.g., all genes overlapped with the DMRs detected from a group comparison. |
+| intersection_size     | The number of input genes annotated to the term in each row, i.e., the overlap between the genes in input and all the genes annotated to the functional term.                                                                                                                          |
+| precision             | The ratio between intersected genes (both in query and annotated to the term) and the total query, i.e., *intersection_size/query_size*.                                                                                                                                               |
+| recall                | The ratio between intersected genes (both in query and annotated to the term) and all the genes annotated to the functional term in the annotation source, i.e., *intersection_size/term_size*.                                                                                        |
+| term_id               | Unique identifier for the functional term in each row, e.g <GO:0005005>.                                                                                                                                                                                                               |
+| source                | Abbreviated name for the annotation source, e.g., <GO:BP> for GeneOntology:biological_process.                                                                                                                                                                                         |
+| term_name             | The short name of the functional term.                                                                                                                                                                                                                                                 |
+| effective_domain_size | The total number of all genes annotated in the source domain genomewide. E.g., all the human genes annotated in <GO:BP>.                                                                                                                                                               |
+| source_order          | The numeric order for the term within its source domain, relevant to the positions in the Manhattan plot.                                                                                                                                                                              |
+| parents               | A list of term IDs (separated by ‘\|’) that are direct parents of the term, and an artificial root node for non-hierarchical data.                                                                                                                                                     |
 
 **More on the statistical test**
 
-Hypergeometric test is used to test whether the input genes are enriched
+Hypergeometric test is used to test whether input genes are enriched
 (i.e., overrepresented) in any functional term (e.g., RNA folding,
-<GO:0034337>) from an annotation source (e.g.,
+<GO:0034337> from the annotation source
 GeneOntology:biological_process). Essentially, it compares the fraction
 of input genes that are annotated to a functional term against the
 background fraction, which is the fraction of genes annotated to the
@@ -510,14 +503,14 @@ Using the figure below as an example, the rectangle denotes the entire
 annotation source (e.g., GeneOntology:biological_process), and the
 number of genes it contains is called *effective_domain_size*. The pink
 circle denotes the genes annotated to a functional term (e.g., RNA
-folding, <GO:0034337>) in the annotation source, and the number of genes
-is called *term_size*. The green circle denotes all the input genes that
-are overlapped with any DMRs detected from one comparison (genes having
-no annotations are excluded), and the number of genes is called
-*query_size*. The overlap (blue part) between the two circles denotes
-the input genes that are also annotated to the term, and its set size is
-called *intersection_size*. The statistical test examines whether the
-fraction *intersection_size/query_size* is significantly greater than
-*term_size/effective_domain_size*.
+folding, <GO:0034337>) in the annotation source, and the set size is
+called *term_size*. The green circle denotes all the input genes, e.g.,
+the genes overlapped with any DMRs detected from a group comparison
+(genes having no annotations are excluded), and the gene set size is
+called *query_size*. The overlap (blue part) between the two circles
+denotes the input genes that are also annotated to the term, and its set
+size is called *intersection_size*. The statistical test examines
+whether the fraction *intersection_size/query_size* is significantly
+greater than *term_size/effective_domain_size*.
 
 <img src="../assets/MethylSeq/gprofiler-explanation.png" width="60%" style="display: block; margin: auto;" />
