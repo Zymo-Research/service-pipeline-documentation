@@ -48,13 +48,6 @@ knitr::knit_hooks$set(class = function(before, options, envir) {
   })
 ```
 
-<style>
-.img-border {
-   border: 3px solid #9ecff7;
-   display: inline-block;
-}
-</style>
-
 ## Overview of the pipeline
 
 The report was generated with Zymo **Methylseq Advanced Analysis** pipeline
@@ -282,13 +275,48 @@ implemented in R package [gprofiler2](https://cran.r-project.org/web/packages/gp
  The files show the significant functional terms. One can find more information
 on the analysis and the output format by visiting [here](https://biit.cs.ut.ee/gprofiler/page/docs)
 and [here](https://cran.r-project.org/web/packages/gprofiler2/vignettes/gprofiler2.html).
+The functional terms examined are from multiple resources, including
+[Gene Ontology](http://geneontology.org/), [KEGG](https://www.genome.jp/kegg/),
+[Reactome](https://reactome.org/), [TRANSFAC](https://genexplain.com/transfac/),
+[miRTarBase](https://mirtarbase.cuhk.edu.cn/~miRTarBase/miRTarBase_2019/php/index.php),
+[CORUM](https://mips.helmholtz-muenchen.de/corum/),
+[Human Protein Atlas](https://www.proteinatlas.org/),
+[Human Phenotype Ontology](http://hpo.jax.org/app/),
+and [WikiPathways](https://www.wikipathways.org/index.php/WikiPathways).
+
 
 The filename is named in the format of *func_enrich.dmr_\<method\>.\<group1\>\_vs\_\<group2\>.enrich_analysis.gprofiler.tsv*,
 where *\<method\>* provides the statistical method (e.g., DSS), and *\<group1\>*
-and *\<group2\>* are the compared group names.
+and *\<group2\>* are the compared group names. Each row shows the statistical result
+for each functional term.
 
 ```{r}
 caption<-NULL
 format_file<-read.csv(file.path(assetFolder,"file_format.gprofiler.csv"))
 kable(format_file, caption=caption, escape=F, format="pipe")
+```
+
+
+**More on the statistical test**
+
+Hypergeometric test is used to test whether input genes are enriched (i.e., overrepresented)
+in any functional term (e.g., RNA folding, GO:0034337 from the annotation source
+ GeneOntology:biological_process). Essentially, it compares the fraction of input
+genes that are annotated to a functional term against the background fraction, which is
+the fraction of genes annotated to the term in the entire annotation source. 
+
+Using the figure below as an example, the rectangle denotes the entire annotation source
+(e.g., GeneOntology:biological_process), and the number of genes it contains is called
+*effective_domain_size*. The pink circle denotes the genes annotated to a functional
+term (e.g., RNA folding, GO:0034337) in the annotation source, and the set size is called *term_size*.
+The green circle denotes all the input genes, e.g., the genes overlapped with any DMRs detected
+from a group comparison (genes having no annotations are excluded), and the gene set size
+is called *query_size*. The overlap (blue part) between the two circles denotes the
+input genes that are also annotated to the term, and its set size is called *intersection_size*.
+The statistical test examines whether the fraction *intersection_size/query_size* is significantly
+greater than *term_size/effective_domain_size*.
+
+
+```{r, out.width="60%"}
+include_graphics(file.path(assetFolder,"gprofiler-explanation.png"))
 ```
