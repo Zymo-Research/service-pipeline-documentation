@@ -6,8 +6,8 @@ This is a public repository to educate customers about bioinformatics pipelines 
 This report is generated using public data from [this paper](https://www.nature.com/articles/nature10730).
 * [How to use the report](docs/how_to_use_ChIPseq_report.md)
 
-## miRNAseq
-* [Sample report](https://zymo-research.github.io/service-pipeline-documentation/reports/miRNAseq_sample_report.html)<br>
+## small RNAseq
+* [Sample report](https://zymo-research.github.io/service-pipeline-documentation/reports/smallRNAseq_sample_report.html)<br>
 This report is generated using public data from [this paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5766192).
 * [How to use the report](docs/how_to_use_miRNAseq_report.md)
 
