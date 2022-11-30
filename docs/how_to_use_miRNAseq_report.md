@@ -33,12 +33,12 @@ The small RNAseq bioinformatics pipeline is built using [Nextflow](https://www.n
 1. Raw read QC ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/))
 2. Adapter trimming ([`Trim Galore!`](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/))
 3. miRNA quality control using reads from step 2 ([`mirtrace`](https://github.com/friedlanderlab/mirtrace))
-4. miRNA alignment, quantification, and differential analysis:
+4. miRNA alignment, quantification, and differential expression analysis:
    1. Collapse duplicate reads ([`seqcsluter`](https://seqcluster.readthedocs.io/mirna_annotation.html#processing-of-reads))
    2. Alignment against miRBase hairpin with reads from step 4i ([`Bowtie1`](http://bowtie-bio.sourceforge.net/index.shtml))
    3. miRNA and isomiR annotation of above alignments ([`mirtop`](https://github.com/miRTop/mirtop))
    4. Sample comparison and statistical analysis ([`isomiRs`](https://www.bioconductor.org/packages/release/bioc/html/isomiRs.html))
-5. Small RNA types alignment, quantification, and differential analysis:
+5. Small RNA types alignment, quantification, and differential expression analysis:
    1. Alignment with reads from step 2 against mature tRNA (GtRNAdb), mitochondrial tRNA, lncRNA, scaRNA, snoRNA, snRNA, miscRNA (Ensembl), rRNA (Ensembl and UCSC Repeatmasker), and miRNA hairpin (miRBase) ([`Bowtie1`](http://bowtie-bio.sourceforge.net/index.shtml)) 
    2. Read count quantification using RSEM with above alignments ([`RSEM`](http://deweylab.github.io/RSEM/README.html))
    3. RSEM results summary with tximport ([`tximport`](https://bioconductor.org/packages/release/bioc/vignettes/tximport/inst/doc/tximport.html))
