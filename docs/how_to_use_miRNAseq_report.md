@@ -1,4 +1,4 @@
-# How to interpret the miRNAseq report
+# How to interpret the small RNAseq report
 
 This document describes how to understand the miRNAseq bioinformatics report delivered to you by Zymo. Most of the plots are taken from the [sample report](https://zymo-research.github.io/service-pipeline-documentation/reports/miRNAseq_sample_report.html). The plots in your report might look a little different.
 
@@ -28,16 +28,22 @@ This document describes how to understand the miRNAseq bioinformatics report del
 
 ## Bioinformatics pipeline overview
 
-The miRNAseq bioinformatics pipeline is built using [Nextflow](https://www.nextflow.io/) and adapted from [nf-core/smrnaseq pipeline](https://github.com/nf-core/smrnaseq) version 1.0.0. A brief summary of pipeline:
+The small RNAseq bioinformatics pipeline is built using [Nextflow](https://www.nextflow.io/) and adapted from [nf-core/smrnaseq pipeline](https://github.com/nf-core/smrnaseq) version 1.0.0. A brief summary of pipeline:
 
 1. Raw read QC ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/))
 2. Adapter trimming ([`Trim Galore!`](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/))
-3. Collapse duplicate reads ([`seqcsluter`](https://seqcluster.readthedocs.io/mirna_annotation.html#processing-of-reads))
-4. Alignment against miRBase hairpin with reads from step 3 ([`Bowtie1`](http://bowtie-bio.sourceforge.net/index.shtml))
-5. miRNA and isomiR annotation from step 4 ([`mirtop`](https://github.com/miRTop/mirtop))
-6. Sample comparison and statistical analysis ([`isomiRs`](https://www.bioconductor.org/packages/release/bioc/html/isomiRs.html))
-7. miRNA quality control using reads from step 2 ([`miRTrace`](https://github.com/friedlanderlab/mirtrace))
-8. Present stats, plots, results ([`MultiQC`](http://multiqc.info/))
+3. miRNA quality control using reads from step 2 ([`mirtrace`](https://github.com/friedlanderlab/mirtrace))
+4. miRNA alignment, quantification, and differential analysis:
+   1. Collapse duplicate reads ([`seqcsluter`](https://seqcluster.readthedocs.io/mirna_annotation.html#processing-of-reads))
+   2. Alignment against miRBase hairpin with reads from step 4i ([`Bowtie1`](http://bowtie-bio.sourceforge.net/index.shtml))
+   3. miRNA and isomiR annotation of above alignments ([`mirtop`](https://github.com/miRTop/mirtop))
+   4. Sample comparison and statistical analysis ([`isomiRs`](https://www.bioconductor.org/packages/release/bioc/html/isomiRs.html))
+5. Small RNA types alignment, quantification, and differential analysis:
+   1. Alignment with reads from step 2 against mature tRNA (GtRNAdb), mitochondrial tRNA, lncRNA, scaRNA, snoRNA, snRNA, miscRNA (Ensembl), rRNA (Ensembl and UCSC Repeatmasker), and miRNA hairpin (miRBase) ([`Bowtie1`](http://bowtie-bio.sourceforge.net/index.shtml)) 
+   2. Read count quantification using RSEM with above alignments ([`RSEM`](http://deweylab.github.io/RSEM/README.html))
+   3. RSEM results summary with tximport ([`tximport`](https://bioconductor.org/packages/release/bioc/vignettes/tximport/inst/doc/tximport.html))
+   4. Differential expression analysis of non-miRNA RNA types using step 5iii tximport summary ([`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html))
+6. Present stats, plots, results ([`MultiQC`](http://multiqc.info/))
 
 ## Report overview
 The bioinformatics report is generated using [`MultiQC`](https://multiqc.info/). There are general instructions on how to use a MultiQC report on [MultiQC website](https://multiqc.info/). The report itself also includes a link to a instructional video at the top of the report. In general, the report has a navigation bar to the left, which allows you to quickly navigate to one of many sections in the report. On the right side, there is a toolbox that allows to customize the appearance of your report and export figures and/or data. Most sections of the report are interactive. The plots will show you the sample name and values when you mouse over them.
