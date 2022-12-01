@@ -78,11 +78,6 @@ The `Trimmed Sequence Lengths` section show numbers of reads with certain length
 ### miRTrace
 [`miRTrace`](https://github.com/friedlanderlab/mirtrace) generates several useful quality control plots for miRNAseq data.
 
-#### RNA categories
-`miRTrace` counts the numbers of reads derived from miRNA, rRNA, tRNA and library/sequencing artifacts among post-trimming reads that passed filtering criteria. The "Unknown" category most likely encompass other small RNAs such as piRNA, siRNA, snoRNA, etc. While rRNA and tRNA reads are not desirable, it is often difficult to limit their presence. If you see large numbers of artifact reads, that might indicate a problem with your experiment. You can use the button on top left to toggle between numbers and percentages of reads.
-
-![miRTrace RNA categories](../images/miRNAseq/mirtrace_categories.jpeg)
-
 #### Read Length Distribution
 This section shows your the distribution of read lengths post-trimming and filtering. In the sample report, you can see majority of the reads are around 22 bp long, which is consistent with the expected length of miRNAs.
 
