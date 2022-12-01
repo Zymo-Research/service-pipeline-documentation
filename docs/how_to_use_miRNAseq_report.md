@@ -55,7 +55,7 @@ The bioinformatics report is generated using [`MultiQC`](https://multiqc.info/).
 1. Most of your reads passed filtering requirements after trimming. We have set the read filtering requirements according expected size of small RNAs (by default: reads longer than 18 bp, you can find the exact requirements in the [`Workflow Summary` section](https://zymo-research.github.io/service-pipeline-documentation/reports/miRNAseq_sample_report.html#workflow_summary)). While it is rare that this number approach 100%, but one would hope most samples have more than 50% reads that are small RNAs.
 2. How much of your reads pass filtering are from miRNAs. There are many types of small RNAs other than miRNAs, so it is natural that only a portion of your reads come from miRNAs. We normally expect to see more miRNA reads than other types. We have seen a wide range of miRNA% in different samples, but in general, miRNA% <10% indicates problems with your sample. You can find more information on the composition of your reads in the [`miRTrace RNA Categories` section](https://zymo-research.github.io/service-pipeline-documentation/reports/smallRNAseq_sample_report.html#mirtrace_rna_categories). 
 
-      ![General statistics table](../images/miRNAseq/smallRNA_generalstats.jpeg)
+      ![General statistics table](../images/miRNAseq/smallRNA_generalstats.jpg)
 
 Other information you can get from this tables are (from left to right):
 1. Numbers of reads. Make sure they are as expected.
@@ -95,22 +95,22 @@ This section plots how many miRNA hairpins are detected at different sequencing 
 
 #### Estimated RNA Type Counts
 
-RSEM quantifies the number of reads derived from miRNA, tRNA, rRNA, lncRNA, miscRNA, scaRNA, snoRNA, and snRNA. The "Uknown" category most likely encompasses other small RNAs such as piRNA, siRNA, etc. You can use the button on the top left to toggle between numbers and percentages of reads. 
+RSEM quantifies the number of reads derived from miRNA, tRNA, rRNA, lncRNA, miscRNA, scaRNA, snoRNA, and snRNA. The "Unknown" category most likely encompasses other small RNAs such as piRNA, siRNA, etc. You can use the button on the top left to toggle between numbers and percentages of reads. 
 
 ![Estimated RNA Type Counts](../images/miRNAseq/smallRNA_EstimatedRNATypes.jpeg)
 
 ## Comparison of samples
 
 ### Sample distance and similarity
-The pipeline uses [`isomiRs`](https://www.bioconductor.org/packages/release/bioc/html/isomiRs.html), which uses [`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html) under the hood, to generate two overview plots of all samples, when there are more than 2 samples in the study. They are generated using normalized read counts of all mature miRNAs.
+When there are more than 2 samples in the study, the pipeline will generate two sets of overview plots for all samples. The first set is generated using normalized read counts of all mature miRNAs and uses [`isomiRs`](https://www.bioconductor.org/packages/release/bioc/html/isomiRs.html), which uses [`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html) under the hood. The second set is generated using normalized read counts of several RNA Types (tRNA, lncRNA, miscRNA, scaRNA, snoRNA, snRNA), excluding miRNA and rRNA.
 
 #### Sample similarity
-This plot shows the Pearson correlation coefficient between pairs of samples. You can mouse over the colored blocks to see correlation coefficients. This plot is made using all mature miRNAs. You can clearly notice the difference between groups of samples (different cell types).
+This plot shows the Pearson correlation coefficient between pairs of samples. You can mouse over the colored blocks to see correlation coefficients. This pipeline will generate two sample similarities plots, one of which will be made using all mature miRNAs, and the other using read counts of 6 RNA types (tRNA, lncRNA, miscRNA, scaRNA, snoRNA, snRNA). In the miRNA plot below, you can clearly notice the difference between groups of samples (different cell types).
 
 ![Similarity matrix plot](../images/miRNAseq/similarity_matrix.jpeg)
 
 #### MDS plot
-This plots shows the distances between all samples. Each dot represents a sample and distances between dots represent differences in miRNA gene expression patterns between samples. Only the top 500 mature miRNAs with highest variances are used to make this plot. You should expect replicate samples to be close to each other, and hope to see clear distances between your comparison groups, as is the case in the sample report.
+This plot shows the distances between all samples. Each dot represents a sample and distances between dots represent differences in RNA gene expression patterns between samples. This pipeline will generate two MDS plots, one of which will be made using mature miRNAs, and the other using read counts of 6 RNA types (tRNA, lncRNA, miscRNA, scaRNA, snoRNA, snRNA). Only the top 500 RNAs with highest variances are used to make both plots. You should expect replicate samples to be close to each other, and hope to see clear distances between your comparison groups, as is the case in the sample report.
 
 ![MDS plot](../images/miRNAseq/mdsplot.jpeg)
 
