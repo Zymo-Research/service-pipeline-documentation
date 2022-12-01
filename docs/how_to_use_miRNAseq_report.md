@@ -120,15 +120,15 @@ This pipeline will generate two plots to represent top gene expression patterns.
 ![miRNA heatmap](../images/miRNAseq/gene_heatmap.jpeg)
 
 ### Differential gene expression
-If your experiment was conducted with replication, this pipeline runs differential gene expression analysis twice, once for miRNA with [`isomiRs`](https://www.bioconductor.org/packages/release/bioc/html/isomiRs.html), which uses [`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html) under the hood, and again for 6 small RNA type genes (tRNA, lncRNA, miscRNA, scaRNA, snoRNA, snRNA).
+If your experiment was conducted with replication, this pipeline runs differential gene expression analysis twice, once for miRNA with [`isomiRs`](https://www.bioconductor.org/packages/release/bioc/html/isomiRs.html), which uses [`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html) under the hood, and again for 6 small RNA type genes (tRNA, lncRNA, miscRNA, scaRNA, snoRNA, snRNA) with only [`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html).
 
 1. **Summary table**<br>
-The number of mature miRNAs and RNA genes from the 6 types that are significantly differentially expressed between groups/conditions are summarized in this table. The numbers are dependent on the false discovery rate (FDR) and fold change cutoffs. You can find those values in the `Workflow summary` section of the report.
+This pipeline will generate two tables summarizing the number of mature miRNAs and the number of RNA genes(tRNA, lncRNA, miscRNA, scaRNA, snoRNA, snRNA) that are significantly differentially expressed between groups/conditions. The numbers are dependent on the false discovery rate (FDR) and fold change cutoffs. You can find those values in the `Workflow summary` section of the report.
 
 ![Differential expression summary table](../images/miRNAseq/diff_exp_summary_table.jpeg)
 
 2. **Scatter plot**<br>
-This plot shows a simple comparison of mature miRNA expression levels or genes from the 6 RNA types between two groups/conditions. Red dots represent differentially expressed genes, while grey ones represent genes not differentially expressed. One useful feature of this plot is that you can see the name of the RNA gene when you mouse over a dot. You can toggle between the different comparisons using the buttons at the top left corner. You can download a static version with all genes plotted in the `Download data` section.
+This pipeline will generate two of these plots, which show a simple comparison of mature miRNA expression levels or genes from the 6 RNA types between two groups/conditions. Red dots represent differentially expressed genes, while grey ones represent genes not differentially expressed. One useful feature of this plot is that you can see the name of the RNA gene when you mouse over a dot. You can toggle between the different comparisons using the buttons at the top left corner. You can download a static version with all genes plotted in the `Download data` section.
 
 ![Differential expression scatter plot](../images/miRNAseq/diff_exp_scatter_plot.jpeg)
 
@@ -138,7 +138,7 @@ This plot presents the same data as the scatter plot, but in a different way. It
 ![Differential expression MA plot](../images/miRNAseq/diff_exp_ma_plot.jpeg)
 
 4. **Top 50 differentially expressed genes**<br>
-For each comparison, we list the top 50 differentially expressed RNAs (ranked by FDR) for your quick examination. You can download the full results of differential expression analysis in the `Download data` section. For each RNA gene, the name, mean counts, Log2 fold change, and FDR are listed. You can click on miRNA names and RNAs with Ensembl gene IDs (in humans, these start with "ENSG") to view more information about that gene from their respective databases. 
+For each comparison, we list the top 50 differentially expressed RNAs (ranked by FDR) for your quick examination. You can download the full results of differential expression analysis in the `Download data` section. For each RNA gene, the name, mean counts, Log2 fold change, and FDR are listed. You can click on miRNA names or RNAs with Ensembl gene IDs (in humans, these start with "ENSG") to view more information about that gene from their respective databases. 
 
 ![Top 50 genes plot](../images/miRNAseq/top_50_genes_plot.jpeg)
 
