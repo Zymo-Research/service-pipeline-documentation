@@ -83,14 +83,6 @@ This section shows your the distribution of read lengths post-trimming and filte
 
 ![miRTrace read length distribution](../images/miRNAseq/mirtrace_read_length.jpeg)
 
-### Pipeline
-
-#### Estimated RNA Type Counts
-
-RSEM quantifies the number of reads derived from miRNA, tRNA, rRNA, lncRNA, miscRNA, scaRNA, snoRNA, and snRNA. The "Uknown" category most likely encompasses other small RNAs such as piRNA, siRNA, etc. You can use the button on the top left to toggle between numbers and percentages of reads. 
-
-![Estimated RNA Type Counts](../images/miRNAseq/smallRNA_EstimatedRNATypes.jpeg)
-
 #### Contamination Check
 This section shows you whether any of your samples might have contaminations from a foreign organism. Please know that this only works if the contaminating organism is distantly related to the organism of interest, for example, insect RNA in a human sample. It won't detect contaminations from closely related organisms, for example, mouse RNA in human sample. In the sample report, all samples are clean.
 
@@ -98,6 +90,14 @@ This section shows you whether any of your samples might have contaminations fro
 This section plots how many miRNA hairpins are detected at different sequencing depths. This would help you understand whether you have sequenced enough for your samples, and whether/how much more sequencing would help discover more miRNA hairpins. In the sample report, you can see all curves are either starting to or have already flatten. Therefore, there will be diminishing returns for more sequencing in most if not all of them.
 
 ![miRTrace complexity plot](../images/miRNAseq/mirtrace_complexity.jpeg)
+
+### Pipeline
+
+#### Estimated RNA Type Counts
+
+RSEM quantifies the number of reads derived from miRNA, tRNA, rRNA, lncRNA, miscRNA, scaRNA, snoRNA, and snRNA. The "Uknown" category most likely encompasses other small RNAs such as piRNA, siRNA, etc. You can use the button on the top left to toggle between numbers and percentages of reads. 
+
+![Estimated RNA Type Counts](../images/miRNAseq/smallRNA_EstimatedRNATypes.jpeg)
 
 ## Comparison of samples
 
