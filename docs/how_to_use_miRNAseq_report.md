@@ -1,6 +1,6 @@
 # How to interpret the small RNAseq report
 
-This document describes how to understand the miRNAseq bioinformatics report delivered to you by Zymo. Most of the plots are taken from the [sample report](https://zymo-research.github.io/service-pipeline-documentation/reports/smallRNAseq_sample_report.html). The plots in your report might look a little different.
+This document describes how to understand the small RNAseq bioinformatics report delivered to you by Zymo. Most of the plots are taken from the [sample report](https://zymo-research.github.io/service-pipeline-documentation/reports/smallRNAseq_sample_report.html). The plots in your report might look a little different.
 
 ## Table of contents
 * [Table of contents](#table-of-contents)
@@ -102,7 +102,7 @@ RSEM quantifies the number of reads derived from miRNA, tRNA, rRNA, lncRNA, misc
 ## Comparison of samples
 
 ### Sample distance and similarity
-When there are more than 2 samples in the study, the pipeline will generate two sets of overview plots for all samples. The first set is generated using normalized read counts of all mature miRNAs and uses [`isomiRs`](https://www.bioconductor.org/packages/release/bioc/html/isomiRs.html), which uses [`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html) under the hood. The second set is generated using normalized read counts of several RNA Types (tRNA, lncRNA, miscRNA, scaRNA, snoRNA, snRNA), excluding miRNA and rRNA.
+When there are more than 2 samples in the study, the pipeline will generate two sets of overview plots for all samples. The first set is generated using normalized read counts of all mature miRNAs with [`isomiRs`](https://www.bioconductor.org/packages/release/bioc/html/isomiRs.html), which uses [`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html) under the hood. The second set is generated with [`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html) using normalized read counts of several RNA Types (tRNA, lncRNA, miscRNA, scaRNA, snoRNA, snRNA), excluding miRNA and rRNA.
 
 #### Sample similarity
 This plot shows the Pearson correlation coefficient between pairs of samples. You can mouse over the colored blocks to see correlation coefficients. This pipeline will generate two sample similarities plots, one of which will be made using all mature miRNAs, and the other using read counts of 6 RNA types (tRNA, lncRNA, miscRNA, scaRNA, snoRNA, snRNA). In the miRNA plot below, you can clearly notice the difference between groups of samples (different cell types).
@@ -115,20 +115,20 @@ This plot shows the distances between all samples. Each dot represents a sample 
 ![MDS plot](../images/miRNAseq/mdsplot.jpeg)
 
 ### Top gene expression patterns
-This plot shows a heatmap of expression patterns of top 100 mature miRNAs with highest variance. Log2 values of fold changes of miRNAs against their mean expression levels among all samples are plotted. Positive numbers (red) indicate higher expression levels, while negative numbers(blue) indicate lower expression levels. The miRNAs were also clustered using hierarchical clustering. This plot gives you an overview of expression patterns among miRNAs with most significant changes in their expression. You can also mouse over to see values for specifc miRNA and sample. In the sample report, you can clearly see different miRNAs being most highly expressed in different cell types. A static version of this plot can also be downloaded in the `Download data` section.
+This pipeline will generate two plots to represent top gene expression patterns. One will be made using only mature miRNA and the other will show results from the small RNA types tRNA, lncRNA, miscRNA, scaRNA, snoRNA, and snRNA. This plot shows a heatmap of expression patterns of the top 100 RNAs with highest variance from each of the two categories previously mentioned. Both graphs plot log2 fold change values of the two RNA categories against their mean expression levels among all samples. In both graphs, positive numbers (red) indicate higher expression levels, while negative numbers (blue) indicate lower expression levels. The RNA results are clustered using hierarchical clustering. This plot gives you an overview of expression patterns among RNAs with most significant changes in their expression. You can also mouse over to see values for specifc RNA and sample. In the sample report featuring an miRNA heatmap below, you can clearly see different miRNAs being most highly expressed in different cell types. A static version of this plot can also be downloaded in the `Download data` section.
 
 ![miRNA heatmap](../images/miRNAseq/gene_heatmap.jpeg)
 
 ### Differential gene expression
-The pipeline uses [`isomiRs`](https://www.bioconductor.org/packages/release/bioc/html/isomiRs.html), which uses [`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html) under the hood, to conduct differential gene expression analysis if you experiment was conducted with replication.
+If your experiment was conducted with replication, this pipeline runs differential gene expression analysis twice, once for miRNA with [`isomiRs`](https://www.bioconductor.org/packages/release/bioc/html/isomiRs.html), which uses [`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html) under the hood, and again for 6 small RNA type genes (tRNA, lncRNA, miscRNA, scaRNA, snoRNA, snRNA).
 
 1. **Summary table**<br>
-The number of mature miRNAs that are significantly differentially expressed between groups/conditions are summarized in a table. The numbers are dependent on the false discovery rate (FDR) and fold change cutoffs. You can find those values in the `Workflow summary` section of the report.
+The number of mature miRNAs and RNA genes from the 6 types that are significantly differentially expressed between groups/conditions are summarized in this table. The numbers are dependent on the false discovery rate (FDR) and fold change cutoffs. You can find those values in the `Workflow summary` section of the report.
 
 ![Differential expression summary table](../images/miRNAseq/diff_exp_summary_table.jpeg)
 
 2. **Scatter plot**<br>
-This plot shows a simple comparison of mature miRNA expression levels between two groups/conditions. Red dots represent differentially expressed miRNAs, while grey ones represent miRNAs not differentially expressed. One useful feature of this plot is that you can see the name of the miRNA when you mouse over a dot. You can toggle between the different comparisons using the buttons at the top left corner. You can download a static version with all genes plotted in the `Download data` section.
+This plot shows a simple comparison of mature miRNA expression levels or genes from the 6 RNA types between two groups/conditions. Red dots represent differentially expressed genes, while grey ones represent genes not differentially expressed. One useful feature of this plot is that you can see the name of the RNA gene when you mouse over a dot. You can toggle between the different comparisons using the buttons at the top left corner. You can download a static version with all genes plotted in the `Download data` section.
 
 ![Differential expression scatter plot](../images/miRNAseq/diff_exp_scatter_plot.jpeg)
 
@@ -138,7 +138,7 @@ This plot presents the same data as the scatter plot, but in a different way. It
 ![Differential expression MA plot](../images/miRNAseq/diff_exp_ma_plot.jpeg)
 
 4. **Top 50 differentially expressed genes**<br>
-For each comparison, we list the top 50 differentially expressed miRNAs (ranked by FDR) for your quick examination. You can download the full results of differential expression analysis in the `Download data` section. For each miRNA, the miRNA name, mean counts, Log2 fold change, and FDR are listed. You can click on the miRNA names to view more information about that gene on mirBase. 
+For each comparison, we list the top 50 differentially expressed RNAs (ranked by FDR) for your quick examination. You can download the full results of differential expression analysis in the `Download data` section. For each RNA gene, the name, mean counts, Log2 fold change, and FDR are listed. You can click on miRNA names and RNAs with Ensembl gene IDs (in humans, these start with "ENSG") to view more information about that gene from their respective databases. 
 
 ![Top 50 genes plot](../images/miRNAseq/top_50_genes_plot.jpeg)
 
