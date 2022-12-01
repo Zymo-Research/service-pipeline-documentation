@@ -1,6 +1,6 @@
 # How to interpret the small RNAseq report
 
-This document describes how to understand the miRNAseq bioinformatics report delivered to you by Zymo. Most of the plots are taken from the [sample report](https://zymo-research.github.io/service-pipeline-documentation/reports/miRNAseq_sample_report.html). The plots in your report might look a little different.
+This document describes how to understand the miRNAseq bioinformatics report delivered to you by Zymo. Most of the plots are taken from the [sample report](https://zymo-research.github.io/service-pipeline-documentation/reports/smallRNAseq_sample_report.html). The plots in your report might look a little different.
 
 ## Table of contents
 * [Table of contents](#table-of-contents)
@@ -51,11 +51,11 @@ The bioinformatics report is generated using [`MultiQC`](https://multiqc.info/).
 ![Report overview](../images/RNAseq/report_overview.jpeg)
 
 ## General statistics table
-[The general statistics table](https://zymo-research.github.io/service-pipeline-documentation/reports/miRNAseq_sample_report.html#general_stats) gives an overview of some important stats of your samples. For example, how many reads were in each sample, how many reads passed filter, and how many reads were miRNA reads, etc. These stats are collected from different sections of the report to give you a snapshot. This is usually the quickest way for you to evaluate how your small RNAseq experiment went. Here are a few important things you should look for when reading this table:
+[The general statistics table](https://zymo-research.github.io/service-pipeline-documentation/reports/smallRNAseq_sample_report.html#general_stats) gives an overview of some important stats of your samples. For example, how many reads were in each sample, how many reads passed filter, and how many reads were miRNA reads, etc. These stats are collected from different sections of the report to give you a snapshot. This is usually the quickest way for you to evaluate how your small RNAseq experiment went. Here are a few important things you should look for when reading this table:
 1. Most of your reads passed filtering requirements after trimming. We have set the read filtering requirements according expected size of small RNAs (by default: reads longer than 18 bp, you can find the exact requirements in the [`Workflow Summary` section](https://zymo-research.github.io/service-pipeline-documentation/reports/miRNAseq_sample_report.html#workflow_summary)). While it is rare that this number approach 100%, but one would hope most samples have more than 50% reads that are small RNAs.
-2. How much of your reads pass filtering are from miRNAs. There are many types of small RNAs other than miRNAs, so it is natural that only a portion of your reads come from miRNAs. We normally expect to see more miRNA reads than other types. We have seen a wide range of miRNA% in different samples, but in general, miRNA% <10% indicates problems with your sample. You can find more information on the composition of your reads in the [`miRTrace RNA Categories` section](https://zymo-research.github.io/service-pipeline-documentation/reports/miRNAseq_sample_report.html#mirtrace_rna_categories). 
+2. How much of your reads pass filtering are from miRNAs. There are many types of small RNAs other than miRNAs, so it is natural that only a portion of your reads come from miRNAs. We normally expect to see more miRNA reads than other types. We have seen a wide range of miRNA% in different samples, but in general, miRNA% <10% indicates problems with your sample. You can find more information on the composition of your reads in the [`miRTrace RNA Categories` section](https://zymo-research.github.io/service-pipeline-documentation/reports/smallRNAseq_sample_report.html#mirtrace_rna_categories). 
 
-![General statistics table](../images/miRNAseq/general_stats.jpeg)
+      ![General statistics table](../images/miRNAseq/smallRNA_generalstats.jpeg)
 
 Other information you can get from this tables are (from left to right):
 1. Numbers of reads. Make sure they are as expected.
