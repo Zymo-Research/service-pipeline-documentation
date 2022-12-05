@@ -146,7 +146,7 @@ For each comparison, we list the top 50 differentially expressed RNAs (ranked by
 ## Download data
 This section of the report can deliver all your original data, intermediate analysis files, and final results to you via the internet. To protect your data, we have made the links in this section to automatically expire in 60 days. If you want to download your files after that, please do not hesitate to contact us. There are three subsections: (1) files for each sample, (2) files concerning all samples, and (3) files for each pairwise comparison. Different file types are arranged in tables or list. Simply click on the links to download individual files. We also provide you a way to download everything altogether. Please follow the instructions in the last subsection. If your institution has limits on how you download files from the internet, please do not hesitate to contact us. We will find a suitable way for you to download your data.
 
-![Download data section](../images/miRNAseq/download_data.jpeg)
+![Download data section](../images/miRNAseq/smallRNA_download_data.jpeg)
 
 ## Software versions
 This section lists the versions of softwares used in this bioinformatic pipeline. This should help you in writing the methods section of your publication or if you wish to carry out some of the analysis on your own.
