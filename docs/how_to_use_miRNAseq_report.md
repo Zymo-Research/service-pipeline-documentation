@@ -14,7 +14,7 @@ This document describes how to understand the small RNAseq bioinformatics report
     * [Read length distribution](#read-length-distribution)
     * [Contamination Check](#contamination-check)
     * [miRNA complexity](#mirna-complexity)
-* [Pipeline](#pipeline)
+* [Quantification](#quantification)
   * [Estimated RNA Type Counts](#estimated-rna-type-counts) 
 * [Comparison of samples](#comparison-of-samples)
   * [Sample distance and similarity](#sample-distance-and-similarity)
@@ -29,7 +29,7 @@ This document describes how to understand the small RNAseq bioinformatics report
 
 ## Bioinformatics pipeline overview
 
-The small RNAseq bioinformatics pipeline is built using [Nextflow](https://www.nextflow.io/) and adapted from [nf-core/smrnaseq pipeline](https://github.com/nf-core/smrnaseq) version 1.0.0. A brief summary of pipeline:
+The small RNAseq bioinformatics pipeline is built using [Nextflow](https://www.nextflow.io/) and adapted from [nf-core/smrnaseq pipeline](https://github.com/nf-core/smrnaseq) version 1.0.0. A brief summary of the pipeline:
 
 1. Raw read QC ([`FastQC`](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/))
 2. Adapter trimming ([`Trim Galore!`](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/))
@@ -53,8 +53,8 @@ The bioinformatics report is generated using [`MultiQC`](https://multiqc.info/).
 
 ## General statistics table
 [The general statistics table](https://zymo-research.github.io/service-pipeline-documentation/reports/smallRNAseq_sample_report.html#general_stats) gives an overview of some important stats of your samples. For example, how many reads were in each sample, how many reads passed filter, and how many reads were miRNA reads, etc. These stats are collected from different sections of the report to give you a snapshot. This is usually the quickest way for you to evaluate how your small RNAseq experiment went. Here are a few important things you should look for when reading this table:
-1. Most of your reads passed filtering requirements after trimming. We have set the read filtering requirements according expected size of small RNAs (by default: reads longer than 18 bp, you can find the exact requirements in the [`Workflow Summary` section](https://zymo-research.github.io/service-pipeline-documentation/reports/miRNAseq_sample_report.html#workflow_summary)). While it is rare that this number approach 100%, but one would hope most samples have more than 50% reads that are small RNAs.
-2. How much of your reads pass filtering are from miRNAs. There are many types of small RNAs other than miRNAs, so it is natural that only a portion of your reads come from miRNAs. We normally expect to see more miRNA reads than other types. We have seen a wide range of miRNA% in different samples, but in general, miRNA% <10% indicates problems with your sample. You can find more information on the composition of your reads in the [`miRTrace RNA Categories` section](https://zymo-research.github.io/service-pipeline-documentation/reports/smallRNAseq_sample_report.html#mirtrace_rna_categories). 
+1. Most of your reads passed filtering requirements after trimming. We have set the read filtering requirements according to the expected size of small RNAs this pipeline tests for (by default: reads longer than 18 bp, you can find the exact requirements in the [`Workflow Summary` section](https://zymo-research.github.io/service-pipeline-documentation/reports/miRNAseq_sample_report.html#workflow_summary)). While it is rare that this number approaches 100%, one would hope most samples have more than 50% reads that are small RNAs.
+2. How much of your reads pass filtering are from miRNAs. There are many types of small RNAs other than miRNAs, so it is natural that only a portion of your reads come from miRNAs. We normally expect to see more miRNA reads than other types in this pipeline. We have seen a wide range of miRNA% in different samples, but in general, miRNA% <10% indicates problems with your sample. You can find more information on the composition of your reads in the [`miRTrace RNA Categories` section](https://zymo-research.github.io/service-pipeline-documentation/reports/smallRNAseq_sample_report.html#mirtrace_rna_categories). 
 
       ![General statistics table](../images/miRNAseq/smallRNA_generalstats.jpg)
 
@@ -80,7 +80,7 @@ The `Trimmed Sequence Lengths` section show numbers of reads with certain length
 [`miRTrace`](https://github.com/friedlanderlab/mirtrace) generates several useful quality control plots for miRNAseq data.
 
 #### Read Length Distribution
-This section shows your the distribution of read lengths post-trimming and filtering. In the sample report, you can see majority of the reads are around 22 bp long, which is consistent with the expected length of miRNAs.
+This section shows you the distribution of read lengths post-trimming and filtering. In the sample report, you can see majority of the reads are around 22 bp long, which is consistent with the expected length of miRNAs.
 
 ![miRTrace read length distribution](../images/miRNAseq/mirtrace_read_length.jpeg)
 
@@ -92,11 +92,11 @@ This section plots how many miRNA hairpins are detected at different sequencing 
 
 ![miRTrace complexity plot](../images/miRNAseq/mirtrace_complexity.jpeg)
 
-### Pipeline
+### Quantification
 
 #### Estimated RNA Type Counts
 
-RSEM quantifies the number of reads derived from miRNA, tRNA, rRNA, lncRNA, miscRNA, scaRNA, snoRNA, and snRNA. The "Unknown" category most likely encompasses other small RNAs such as piRNA, siRNA, etc. You can use the button on the top left to toggle between numbers and percentages of reads. 
+[`RSEM`](http://deweylab.github.io/RSEM/README.html) quantifies the number of reads derived from miRNA, tRNA, rRNA, lncRNA, miscRNA, scaRNA, snoRNA, and snRNA. The "Unknown" category most likely encompasses other small RNAs such as piRNA, siRNA, etc. You can use the button on the top left to toggle between numbers and percentages of reads. 
 
 ![Estimated RNA Type Counts](../images/miRNAseq/smallRNA_EstimatedRNATypes.jpeg)
 
@@ -116,20 +116,20 @@ This plot shows the distances between all samples. Each dot represents a sample 
 ![MDS plot](../images/miRNAseq/mdsplot.jpeg)
 
 ### Top gene expression patterns
-This pipeline will generate two plots to represent top gene expression patterns. One will be made using only mature miRNA and the other will show results from the small RNA types tRNA, lncRNA, miscRNA, scaRNA, snoRNA, and snRNA. This plot shows a heatmap of expression patterns of the top 100 RNAs with highest variance from each of the two categories previously mentioned. Both graphs plot log2 fold change values of the two RNA categories against their mean expression levels among all samples. In both graphs, positive numbers (red) indicate higher expression levels, while negative numbers (blue) indicate lower expression levels. The RNA results are clustered using hierarchical clustering. This plot gives you an overview of expression patterns among RNAs with most significant changes in their expression. You can also mouse over to see values for specifc RNA and sample. In the sample report featuring an miRNA heatmap below, you can clearly see different miRNAs being most highly expressed in different cell types. A static version of this plot can also be downloaded in the `Download data` section.
+This pipeline will generate two plots to represent top gene expression patterns. One will be made using only mature miRNA and the other will show results from the small RNA types tRNA, lncRNA, miscRNA, scaRNA, snoRNA, and snRNA. This plot shows a heatmap of expression patterns of the top 100 RNAs with highest variance from each of the two categories (mature miRNA and small RNA types) previously mentioned. Both graphs plot log2 fold change values of the two RNA categories against their mean expression levels among all samples. In both graphs, positive numbers (red) indicate higher expression levels, while negative numbers (blue) indicate lower expression levels. The RNA results are clustered using hierarchical clustering. This plot gives you an overview of expression patterns among RNAs with most significant changes in their expression. You can also mouse over to see values for specifc RNA and sample. In the sample report featuring an miRNA heatmap below, you can clearly see different miRNAs being most highly expressed in different cell types. A static version of this plot can also be downloaded in the `Download data` section.
 
 ![miRNA heatmap](../images/miRNAseq/miRNA_gene_heatmap.JPG)
 
 ### Differential gene expression
-If your experiment was conducted with replication, this pipeline runs differential gene expression analysis twice, once for miRNA with [`isomiRs`](https://www.bioconductor.org/packages/release/bioc/html/isomiRs.html), which uses [`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html) under the hood, and again for 6 small RNA type genes (tRNA, lncRNA, miscRNA, scaRNA, snoRNA, snRNA) with only [`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html).
+If your experiment was conducted with replication, this pipeline runs differential gene expression analysis twice, once for miRNA with [`isomiRs`](https://www.bioconductor.org/packages/release/bioc/html/isomiRs.html), which uses [`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html) under the hood, and again for 6 small RNA type genes (tRNA, lncRNA, miscRNA, scaRNA, snoRNA, snRNA) together with only [`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html).
 
 1. **Summary table**<br>
-This pipeline will generate two tables summarizing the number of mature miRNAs and the number of RNA genes(tRNA, lncRNA, miscRNA, scaRNA, snoRNA, snRNA) that are significantly differentially expressed between groups/conditions. The numbers are dependent on the false discovery rate (FDR) and fold change cutoffs. You can find those values in the `Workflow summary` section of the report.
+This pipeline will generate two tables summarizing the number of mature miRNAs and the number of RNA genes (tRNA, lncRNA, miscRNA, scaRNA, snoRNA, snRNA) that are significantly differentially expressed between groups/conditions. The numbers are dependent on the false discovery rate (FDR) and fold change cutoffs. You can find those values in the `Workflow summary` section of the report.
 
 ![Differential expression summary table](../images/miRNAseq/diff_exp_summary_table.jpeg)
 
 2. **Scatter plot**<br>
-This pipeline will generate two of these plots, which show a simple comparison of mature miRNA expression levels or genes from the 6 RNA types between two groups/conditions. Red dots represent differentially expressed genes, while grey ones represent genes not differentially expressed. One useful feature of this plot is that you can see the name of the RNA gene when you mouse over a dot. You can toggle between the different comparisons using the buttons at the top left corner. You can download a static version with all genes plotted in the `Download data` section.
+This pipeline will generate two of these plots, which show a simple comparison of mature miRNA expression levels or of genes from the 6 RNA types between two groups/conditions. Red dots represent differentially expressed genes, while grey ones represent genes not differentially expressed. One useful feature of this plot is that you can see the name of the RNA gene when you mouse over a dot. You can toggle between the different comparisons using the buttons at the top left corner. You can download a static version with all genes plotted in the `Download data` section.
 
 ![Differential expression scatter plot](../images/miRNAseq/diff_exp_scatter_plot.jpeg)
 
@@ -139,7 +139,7 @@ This plot presents the same data as the scatter plot, but in a different way. It
 ![Differential expression MA plot](../images/miRNAseq/diff_exp_ma_plot.jpeg)
 
 4. **Top 50 differentially expressed genes**<br>
-For each comparison, we list the top 50 differentially expressed RNAs (ranked by FDR) for your quick examination. You can download the full results of differential expression analysis in the `Download data` section. For each RNA gene, the name, mean counts, Log2 fold change, and FDR are listed. You can click on miRNA names or RNAs with Ensembl gene IDs (in humans, these start with "ENSG") to view more information about that gene from their respective databases. 
+For each comparison, we list the top 50 differentially expressed RNAs (ranked by FDR) for your quick examination. You can download the full results of differential expression analysis in the `Download data` section. For each RNA gene, the name, mean counts, Log2 fold change, and FDR are listed. You can click on miRNA names or RNA types with Ensembl gene IDs (in humans, these start with "ENSG") to view more information about that gene from their respective databases. 
 
 ![Top 50 genes plot](../images/miRNAseq/top_50_genes_plot.jpeg)
 
