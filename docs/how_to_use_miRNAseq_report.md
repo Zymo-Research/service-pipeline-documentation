@@ -85,7 +85,9 @@ This section shows you the distribution of read lengths post-trimming and filter
 ![miRTrace read length distribution](../images/miRNAseq/mirtrace_read_length.jpeg)
 
 #### Contamination Check
-This section shows you whether any of your samples might have contaminations from a foreign organism. Please know that this only works if the contaminating organism is distantly related to the organism of interest, for example, insect RNA in a human sample. It won't detect contaminations from closely related organisms, for example, mouse RNA in human sample. In the sample report, all samples are clean.
+This section shows you whether any of your samples might have contaminations from a foreign organism. Please know that this only works if the contaminating organism is distantly related to the organism of interest, for example, insect RNA in a human sample. It won't detect contaminations from closely related organisms, for example, primate RNA in a human sample. In the sample report, all samples are clean.
+
+![miRTrace_contamination_check](../images/miRNAseq/mirtrace_contamination.jpeg)
 
 #### miRNA complexity
 This section plots how many miRNA hairpins are detected at different sequencing depths. This would help you understand whether you have sequenced enough for your samples, and whether/how much more sequencing would help discover more miRNA hairpins. In the sample report, you can see all curves are either starting to or have already flatten. Therefore, there will be diminishing returns for more sequencing in most if not all of them.
