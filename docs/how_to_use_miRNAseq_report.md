@@ -49,11 +49,11 @@ The small RNAseq bioinformatics pipeline is built using [Nextflow](https://www.n
 ## Report overview
 The bioinformatics report is generated using [`MultiQC`](https://multiqc.info/). There are general instructions on how to use a MultiQC report on [MultiQC website](https://multiqc.info/). The report itself also includes a link to a instructional video at the top of the report. In general, the report has a navigation bar to the left, which allows you to quickly navigate to one of many sections in the report. On the right side, there is a toolbox that allows to customize the appearance of your report and export figures and/or data. Most sections of the report are interactive. The plots will show you the sample name and values when you mouse over them.
 
-![Report overview](../images/RNAseq/report_overview.jpeg)
+![Report overview](../images/miRNAseq/smallRNA_report_overview.jpeg)
 
 ## General statistics table
 [The general statistics table](https://zymo-research.github.io/service-pipeline-documentation/reports/smallRNAseq_sample_report.html#general_stats) gives an overview of some important stats of your samples. For example, how many reads were in each sample, how many reads passed filter, and how many reads were miRNA reads, etc. These stats are collected from different sections of the report to give you a snapshot. This is usually the quickest way for you to evaluate how your small RNAseq experiment went. Here are a few important things you should look for when reading this table:
-1. Most of your reads passed filtering requirements after trimming. We have set the read filtering requirements according to the expected size of small RNAs this pipeline tests for (by default: reads longer than 18 bp, you can find the exact requirements in the [`Workflow Summary` section](https://zymo-research.github.io/service-pipeline-documentation/reports/miRNAseq_sample_report.html#workflow_summary)). While it is rare that this number approaches 100%, one would hope most samples have more than 50% reads that are small RNAs.
+1. Most of your reads passed filtering requirements after trimming. We have set the read filtering requirements according to the expected size of small RNAs this pipeline tests for (by default: reads longer than 18 bp, you can find the exact requirements in the [`Workflow Summary` section](https://zymo-research.github.io/service-pipeline-documentation/reports/miRNAseq_sample_report.html#workflow_summary)). While it is rare that this number approaches 100%, one would hope most samples have more than 50% reads that pass filters.
 2. How much of your reads pass filtering are from miRNAs. There are many types of small RNAs other than miRNAs, so it is natural that only a portion of your reads come from miRNAs. We normally expect to see more miRNA reads than other types in this pipeline. We have seen a wide range of miRNA% in different samples, but in general, miRNA% <10% indicates problems with your sample. You can find more information on the composition of your reads in the [`miRTrace RNA Categories` section](https://zymo-research.github.io/service-pipeline-documentation/reports/smallRNAseq_sample_report.html#mirtrace_rna_categories). 
 
       ![General statistics table](../images/miRNAseq/smallRNA_generalstats.jpg)
@@ -85,7 +85,7 @@ This section shows you the distribution of read lengths post-trimming and filter
 ![miRTrace read length distribution](../images/miRNAseq/mirtrace_read_length.jpeg)
 
 #### Contamination Check
-This section shows you whether any of your samples might have contaminations from a foreign organism. Please know that this only works if the contaminating organism is distantly related to the organism of interest, for example, insect RNA in a human sample. It won't detect contaminations from closely related organisms, for example, primate RNA in a human sample. In the sample report, all samples are clean.
+This section shows you whether any of your samples might have contaminations from a foreign organism. Please know that this only works if the contaminating organism is distantly related to the organism of interest, for example, insect RNA in a human sample. It won't detect contaminations from closely related organisms, for example, non-human primate RNA in a human sample. In the sample report, all samples are clean.
 
 ![miRTrace_contamination_check](../images/miRNAseq/mirtrace_contamination.jpeg)
 
@@ -141,9 +141,10 @@ This plot presents the same data as the scatter plot, but in a different way. It
 ![Differential expression MA plot](../images/miRNAseq/diff_exp_ma_plot.jpeg)
 
 4. **Top 50 differentially expressed genes**<br>
-For each comparison, we list the top 50 differentially expressed RNAs (ranked by FDR) for your quick examination. You can download the full results of differential expression analysis in the `Download data` section. For each RNA gene, the name, mean counts, Log2 fold change, and FDR are listed. You can click on miRNA names or RNA types with Ensembl gene IDs (in humans, these start with "ENSG") to view more information about that gene from their respective databases. 
+For each comparison, we list the top 50 differentially expressed RNAs (ranked by FDR) for your quick examination. You can download the full results of differential expression analysis in the `Download data` section. For each RNA gene, the name, mean counts, Log2 fold change, and FDR are listed. You can click on miRNA names to view more information about that gene on mirBase. For non-miRNA small RNA types, you can click on Ensembl gene IDs (in humans, these start with "ENSG") to view more information about that gene on Ensembl.
 
 ![Top 50 genes plot](../images/miRNAseq/top_50_genes_plot.jpeg)
+![DESeq2_top_50_genes_plot](../images/miRNAseq/top_50_genes_plot_deseq2.jpeg)
 
 ## Download data
 This section of the report can deliver all your original data, intermediate analysis files, and final results to you via the internet. To protect your data, we have made the links in this section to automatically expire in 60 days. If you want to download your files after that, please do not hesitate to contact us. There are three subsections: (1) files for each sample, (2) files concerning all samples, and (3) files for each pairwise comparison. Different file types are arranged in tables or list. Simply click on the links to download individual files. We also provide you a way to download everything altogether. Please follow the instructions in the last subsection. If your institution has limits on how you download files from the internet, please do not hesitate to contact us. We will find a suitable way for you to download your data.
