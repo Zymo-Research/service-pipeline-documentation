@@ -131,7 +131,7 @@ This pipeline will generate two tables summarizing the number of mature miRNAs o
 ![Differential expression summary table](../images/smallRNAseq/diff_exp_summary_table.jpeg)
 
 2. **Scatter plot**<br>
-This pipeline will generate two of these plots, which show a simple comparison of mature miRNA expression levels or of genes from the 6 RNA types between two groups/conditions. Red dots represent differentially expressed genes, while grey ones represent genes not differentially expressed. One useful feature of this plot is that you can see the name of the RNA gene when you mouse over a dot. You can toggle between the different comparisons using the buttons at the top left corner. You can download a static version with all genes plotted in the `Download data` section.
+This pipeline will generate two of these plots, which show a simple comparison between two groups/conditions of either mature miRNA expression levels or of gene expression levels from the 6 RNA types. Red dots represent differentially expressed genes, while grey ones represent genes not differentially expressed. One useful feature of this plot is that you can see the name of the RNA gene when you mouse over a dot. You can toggle between the different comparisons using the buttons at the top left corner. You can download a static version with all genes plotted in the `Download data` section.
 
 ![Differential expression scatter plot](../images/smallRNAseq/diff_exp_scatter_plot.jpeg)
 
