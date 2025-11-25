@@ -18,7 +18,7 @@ This document describes how to understand the RNAseq bioinformatics report deliv
   * [DupRadar](#dupradar)
   * [ERCC expression vs concentration](#ercc-expression-vs-concentration)
   * [Biotype Counts](#biotype-counts)
-  * [featureCounts](#featureCounts)
+  * [featureCounts](#featurecounts)
 * [Comparison of samples](#comparison-of-samples)
   * [Sample distance and similarity](#sample-distance-and-similarity)
     * [Sample Similarity](#sample-similarity)
@@ -44,9 +44,9 @@ The RNAseq bioinformatics pipeline is built using [Nextflow](https://www.nextflo
     * Mark duplicates ([`Picard`](https://broadinstitute.github.io/picard/))
     * Library complexity estimation ([`Preseq`](http://smithlabresearch.org/software/preseq/))
     * Duplication rate QC ([`dupRadar`](https://bioconductor.org/packages/release/bioc/html/dupRadar.html))
-    * Biotype composition plot ([`featureCounts`](http://bioinf.wehi.edu.au/featureCounts/))
-    * ERCC spike-in plot ([[`STAR`](https://github.com/alexdobin/STAR) and [`featureCounts`](http://bioinf.wehi.edu.au/featureCounts/))
-5. Read counting ([`featureCounts`](http://bioinf.wehi.edu.au/featureCounts/))
+    * Biotype composition plot ([`featureCounts`](https://subread.sourceforge.net/))
+    * ERCC spike-in plot ([`STAR`](https://github.com/alexdobin/STAR) and ([`featureCounts`](https://subread.sourceforge.net/))
+5. Read counting ([`featureCounts`](https://subread.sourceforge.net/))
 6. Sample comparison
     * Sample similarity matrix, sample MDS plot, heatmap of expression patterns of top genes ([`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html)) 
     * Differential gene expression analysis ([`DESeq2`](https://bioconductor.org/packages/release/bioc/html/DESeq2.html))
@@ -168,7 +168,7 @@ This plot summarizes the composition of reads from different biotypes. A good RN
 ![Biotype plot](../images/RNAseq/biotype.jpeg)
 
 ### featureCounts
-[`featureCounts`](http://bioinf.wehi.edu.au/featureCounts/) assigns reads that overlap exons to corresponding genes. This plot in the report summarizes how many reads are assigned and reasons why they are not assigned. A good RNAseq sample should have majority of reads assigned to genes. If a large portion of reads are "Unassigned_MultiMapping", this implies rRNA contamination in the sample, please confirm this with `Biotype Counts` plot. If a large portion of reads are "Unassigned_NoFeatures", this implies DNA contamination, you can see if `RSeQC` `Infer experiment` plot corroborates this suspicion.
+[`featureCounts`](https://subread.sourceforge.net/) assigns reads that overlap exons to corresponding genes. This plot in the report summarizes how many reads are assigned and reasons why they are not assigned. A good RNAseq sample should have majority of reads assigned to genes. If a large portion of reads are "Unassigned_MultiMapping", this implies rRNA contamination in the sample, please confirm this with `Biotype Counts` plot. If a large portion of reads are "Unassigned_NoFeatures", this implies DNA contamination, you can see if `RSeQC` `Infer experiment` plot corroborates this suspicion.
 
 ![featureCounts plot](../images/RNAseq/featurecounts.jpeg)
 
