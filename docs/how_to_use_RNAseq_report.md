@@ -168,7 +168,7 @@ This plot summarizes the composition of reads from different biotypes. A good RN
 ![Biotype plot](../images/RNAseq/biotype.jpeg)
 
 ### featureCounts
-[`featureCounts`](http://bioinf.wehi.edu.au/featureCounts/) assigns reads that overlap exons to corresponding genes. This plot in the report summarizes how many reads are assigned and reasons why they are not assigned. A good RNAseq sample should have majority of reads assigned to genes. If a large portion of reads are "Unassigned_MultiMapping", this implies rRNA contamination in the sample, please confirm this with `Biotype Counts` plot. If a large portion of reads are "Unassigned_NoFeatures", this implies DNA contamination, you can see if `RSeQC` `Infer experiment` plot corroborates this suspicion.
+[`featureCounts`](https://subread.sourceforge.net/) assigns reads that overlap exons to corresponding genes. This plot in the report summarizes how many reads are assigned and reasons why they are not assigned. A good RNAseq sample should have majority of reads assigned to genes. If a large portion of reads are "Unassigned_MultiMapping", this implies rRNA contamination in the sample, please confirm this with `Biotype Counts` plot. If a large portion of reads are "Unassigned_NoFeatures", this implies DNA contamination, you can see if `RSeQC` `Infer experiment` plot corroborates this suspicion.
 
 ![featureCounts plot](../images/RNAseq/featurecounts.jpeg)
 
